@@ -819,6 +819,32 @@ form { display: flex; flex-direction: column; gap: 0; }
   .chat-panel { width: 290px; }
 }
 
+/* ── Lang Toggle ────────────────────────────────────── */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--gray-light);
+  border: 1px solid rgba(201,165,53,0.25);
+  padding: 6px 10px;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color var(--t-fast);
+}
+.lang-toggle:hover { border-color: var(--gold-dim); }
+.lang-btn { transition: color var(--t-fast); }
+.lang-btn.active { color: var(--gold); font-weight: 600; }
+.lang-sep { color: rgba(255,255,255,0.2); }
+.lang-toggle--mobile {
+  margin: 24px auto 0;
+  font-size: 0.75rem;
+  padding: 10px 20px;
+}
+
 /* ── Testimonials ───────────────────────────────────── */
 #temoignages {
   padding: 120px 48px;

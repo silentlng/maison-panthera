@@ -39,7 +39,7 @@
   <!-- Preload hero image -->
   <link rel="preload" as="image" href="images/hero-bg.jpeg">
 
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -63,10 +63,15 @@
       <span>MAISON PANTHERA</span>
     </a>
     <div class="nav-links">
-      <a href="#services" class="nav-link">SERVICES</a>
-      <a href="#about" class="nav-link">À PROPOS</a>
-      <a href="#formulaire" class="nav-link">CONTACT</a>
+      <a href="#services" class="nav-link" data-i18n="nav.services">SERVICES</a>
+      <a href="#about" class="nav-link" data-i18n="nav.about">À PROPOS</a>
+      <a href="#formulaire" class="nav-link" data-i18n="nav.contact">CONTACT</a>
     </div>
+    <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+      <span class="lang-btn active" data-lang="fr">FR</span>
+      <span class="lang-sep">/</span>
+      <span class="lang-btn" data-lang="en">EN</span>
+    </button>
     <a href="tel:+33668731109" class="nav-cta">+33 6 68 73 11 09</a>
     <button class="nav-burger" id="burger" aria-label="Menu">
       <span></span><span></span>
@@ -76,9 +81,14 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" id="mobileClose">✕</button>
-    <a href="#services"  class="mobile-link">SERVICES</a>
-    <a href="#about"     class="mobile-link">À PROPOS</a>
-    <a href="#formulaire" class="mobile-link">CONTACT</a>
+    <a href="#services"  class="mobile-link" data-i18n="nav.services">SERVICES</a>
+    <a href="#about"     class="mobile-link" data-i18n="nav.about">À PROPOS</a>
+    <a href="#formulaire" class="mobile-link" data-i18n="nav.contact">CONTACT</a>
+    <button class="lang-toggle lang-toggle--mobile" id="langToggleMobile" aria-label="Switch language">
+      <span class="lang-btn active" data-lang="fr">FR</span>
+      <span class="lang-sep">/</span>
+      <span class="lang-btn" data-lang="en">EN</span>
+    </button>
     <a href="tel:+33668731109" class="mobile-phone">+33 6 68 73 11 09</a>
   </div>
 
@@ -93,14 +103,14 @@
         <span class="hero-line-2">PANTHERA</span>
       </h1>
       <div class="hero-divider-line"></div>
-      <p class="hero-subtitle">CONCIERGERIE D'EXCEPTION</p>
-      <p class="hero-tagline">Votre vie mérite le meilleur.<br>Nous le rendons possible.</p>
+      <p class="hero-subtitle" data-i18n="hero.subtitle">CONCIERGERIE D'EXCEPTION</p>
+      <p class="hero-tagline" data-i18n="hero.tagline">Votre vie mérite le meilleur.<br>Nous le rendons possible.</p>
       <div class="hero-actions">
         <a href="#services" class="btn-gold">
-          <span>DÉCOUVRIR NOS SERVICES</span>
+          <span data-i18n="hero.cta1">DÉCOUVRIR NOS SERVICES</span>
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9H15M15 9L10 4M15 9L10 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </a>
-        <a href="#formulaire" class="btn-outline">PRENDRE CONTACT</a>
+        <a href="#formulaire" class="btn-outline" data-i18n="hero.cta2">PRENDRE CONTACT</a>
       </div>
     </div>
     <div class="hero-scroll">
@@ -113,22 +123,22 @@
   <div class="hero-stats">
     <div class="hero-stat">
       <span class="stat-num">500<em>+</em></span>
-      <span class="stat-label">MISSIONS RÉALISÉES</span>
+      <span class="stat-label" data-i18n="stats.missions">MISSIONS RÉALISÉES</span>
     </div>
     <div class="stat-sep"></div>
     <div class="hero-stat">
       <span class="stat-num">8</span>
-      <span class="stat-label">SERVICES PREMIUM</span>
+      <span class="stat-label" data-i18n="stats.services">SERVICES PREMIUM</span>
     </div>
     <div class="stat-sep"></div>
     <div class="hero-stat">
       <span class="stat-num">24<em>/7</em></span>
-      <span class="stat-label">DISPONIBILITÉ</span>
+      <span class="stat-label" data-i18n="stats.availability">DISPONIBILITÉ</span>
     </div>
     <div class="stat-sep"></div>
     <div class="hero-stat">
       <span class="stat-num">100<em>%</em></span>
-      <span class="stat-label">DISCRÉTION GARANTIE</span>
+      <span class="stat-label" data-i18n="stats.discretion">DISCRÉTION GARANTIE</span>
     </div>
   </div>
 
@@ -167,35 +177,29 @@
         <div class="about-media-badge">PARIS</div>
       </div>
       <div class="about-body reveal-right">
-        <p class="label">À PROPOS</p>
-        <h2 class="display-title">L'ART DU<br>SERVICE<br>ABSOLU</h2>
+        <p class="label" data-i18n="about1.label">À PROPOS</p>
+        <h2 class="display-title" data-i18n="about1.title">L'ART DU<br>SERVICE<br>ABSOLU</h2>
         <div class="gold-rule"></div>
-        <p class="body-text">
+        <p class="body-text" data-i18n="about1.body">
           Maison Panthera est une conciergerie full service dédiée à proposer les meilleurs services pour pouvoir répondre à toutes vos demandes dans la plus grande réactivité.
         </p>
-        <p class="body-text italic">
-          A full-service concierge dedicated to providing the finest services, responding to your every request with the utmost responsiveness.
-        </p>
         <div class="about-feature-list">
-          <div class="about-feature"><span class="feat-dot"></span>Réponse en moins de 30 minutes</div>
-          <div class="about-feature"><span class="feat-dot"></span>Réseau de prestataires d'exception</div>
-          <div class="about-feature"><span class="feat-dot"></span>Service 100% personnalisé</div>
+          <div class="about-feature"><span class="feat-dot"></span><span data-i18n="about1.feat1">Réponse en moins de 30 minutes</span></div>
+          <div class="about-feature"><span class="feat-dot"></span><span data-i18n="about1.feat2">Réseau de prestataires d'exception</span></div>
+          <div class="about-feature"><span class="feat-dot"></span><span data-i18n="about1.feat3">Service 100% personnalisé</span></div>
         </div>
       </div>
     </div>
 
     <div class="about-block about-block--reverse">
       <div class="about-body reveal-left">
-        <p class="label">NOTRE RÉSEAU</p>
-        <h2 class="display-title">PARTENAIRES<br>D'EXCEPTION</h2>
+        <p class="label" data-i18n="about2.label">NOTRE RÉSEAU</p>
+        <h2 class="display-title" data-i18n="about2.title">PARTENAIRES<br>D'EXCEPTION</h2>
         <div class="gold-rule"></div>
-        <p class="body-text">
+        <p class="body-text" data-i18n="about2.body">
           Maison Panthera collabore avec un réseau de prestataires reconnus, nous permettant de vous proposer une large gamme de services personnalisés et de haute qualité — VTC, booking, accès événements sportifs et festifs, locations privées.
         </p>
-        <p class="body-text italic">
-          We work with a network of renowned partners, offering a wide range of high-quality personalized services across Paris and internationally.
-        </p>
-        <a href="#formulaire" class="btn-gold-sm">FAIRE UNE DEMANDE</a>
+        <a href="#formulaire" class="btn-gold-sm" data-i18n="about2.cta">FAIRE UNE DEMANDE</a>
       </div>
       <div class="about-media reveal-right">
         <img src="images/about-2.jpeg" alt="Maison Panthera — Partenaires" loading="lazy">
@@ -215,17 +219,17 @@
       <div class="value-rule"></div>
       <div class="value-item">
         <span class="value-num">02</span>
-        <span class="value-name">DISCRÉTION</span>
+        <span class="value-name" data-i18n="values.discretion">DISCRÉTION</span>
       </div>
       <div class="value-rule"></div>
       <div class="value-item">
         <span class="value-num">03</span>
-        <span class="value-name">RÉACTIVITÉ</span>
+        <span class="value-name" data-i18n="values.reactivity">RÉACTIVITÉ</span>
       </div>
       <div class="value-rule"></div>
       <div class="value-item">
         <span class="value-num">04</span>
-        <span class="value-name">SUR MESURE</span>
+        <span class="value-name" data-i18n="values.bespoke">SUR MESURE</span>
       </div>
     </div>
   </div>
@@ -234,8 +238,8 @@
   <section id="services">
     <div class="section-head reveal-up">
       <p class="label">EXPERTISE</p>
-      <h2 class="display-title-xl">NOS SERVICES</h2>
-      <p class="section-sub">Une gamme complète de services premium, disponible 7j/7</p>
+      <h2 class="display-title-xl" data-i18n="services.title">NOS SERVICES</h2>
+      <p class="section-sub" data-i18n="services.sub">Une gamme complète de services premium, disponible 7j/7</p>
     </div>
 
     <div class="services-grid">
@@ -246,8 +250,8 @@
         <div class="card-body">
           <span class="card-num">01</span>
           <h3 class="card-title">VTC</h3>
-          <p class="card-desc">Van chauffeur &amp; transport privé premium. Véhicules haut de gamme, chauffeurs professionnels.</p>
-          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
+          <p class="card-desc" data-i18n="card.vtc">Van chauffeur &amp; transport privé premium. Véhicules haut de gamme, chauffeurs professionnels.</p>
+          <a href="#formulaire" class="card-cta" data-i18n="card.cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -257,8 +261,8 @@
         <div class="card-body">
           <span class="card-num">02</span>
           <h3 class="card-title">PERSONAL<br>SHOPPER</h3>
-          <p class="card-desc">Accès aux plus grandes maisons de luxe. Shopping personnalisé &amp; exclusif.</p>
-          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
+          <p class="card-desc" data-i18n="card.shopper">Accès aux plus grandes maisons de luxe. Shopping personnalisé &amp; exclusif.</p>
+          <a href="#formulaire" class="card-cta" data-i18n="card.cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -268,8 +272,8 @@
         <div class="card-body">
           <span class="card-num">03</span>
           <h3 class="card-title">CAR RENTAL</h3>
-          <p class="card-desc">Location de véhicules prestige &amp; supercars. Ferrari, Lamborghini, Rolls-Royce.</p>
-          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
+          <p class="card-desc" data-i18n="card.carrental">Location de véhicules prestige &amp; supercars. Ferrari, Lamborghini, Rolls-Royce.</p>
+          <a href="#formulaire" class="card-cta" data-i18n="card.cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -279,8 +283,8 @@
         <div class="card-body">
           <span class="card-num">04</span>
           <h3 class="card-title">BOOKING</h3>
-          <p class="card-desc">Restaurants étoilés, hôtels de prestige, réservations VIP partout dans le monde.</p>
-          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
+          <p class="card-desc" data-i18n="card.booking">Restaurants étoilés, hôtels de prestige, réservations VIP partout dans le monde.</p>
+          <a href="#formulaire" class="card-cta" data-i18n="card.cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -290,8 +294,8 @@
         <div class="card-body">
           <span class="card-num">05</span>
           <h3 class="card-title">MATCH ACCESS</h3>
-          <p class="card-desc">Toutes catégories jusqu'aux loges VIP. Roland-Garros, PSG, F1 &amp; plus.</p>
-          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
+          <p class="card-desc" data-i18n="card.match">Toutes catégories jusqu'aux loges VIP. Roland-Garros, PSG, F1 &amp; plus.</p>
+          <a href="#formulaire" class="card-cta" data-i18n="card.cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -301,8 +305,8 @@
         <div class="card-body">
           <span class="card-num">06</span>
           <h3 class="card-title">CONCERT<br>ACCESS</h3>
-          <p class="card-desc">Accès VIP aux meilleurs concerts &amp; événements exclusifs. Premières loges garanties.</p>
-          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
+          <p class="card-desc" data-i18n="card.concert">Accès VIP aux meilleurs concerts &amp; événements exclusifs. Premières loges garanties.</p>
+          <a href="#formulaire" class="card-cta" data-i18n="card.cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -312,8 +316,8 @@
         <div class="card-body">
           <span class="card-num">07</span>
           <h3 class="card-title">PRIVATE JET</h3>
-          <p class="card-desc">Voyagez à votre rythme. Destinations mondiales, disponibilité immédiate.</p>
-          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
+          <p class="card-desc" data-i18n="card.jet">Voyagez à votre rythme. Destinations mondiales, disponibilité immédiate.</p>
+          <a href="#formulaire" class="card-cta" data-i18n="card.cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -323,8 +327,8 @@
         <div class="card-body">
           <span class="card-num">08</span>
           <h3 class="card-title">YACHT</h3>
-          <p class="card-desc">Location de yachts de luxe. Croisières privées en Méditerranée &amp; au-delà.</p>
-          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
+          <p class="card-desc" data-i18n="card.yacht">Location de yachts de luxe. Croisières privées en Méditerranée &amp; au-delà.</p>
+          <a href="#formulaire" class="card-cta" data-i18n="card.cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -339,9 +343,9 @@
       <div class="quote-logo">
         <img src="images/logo.jpeg" alt="">
       </div>
-      <p class="quote-text">Chaque détail est une promesse.<br>Chaque service, une expérience inoubliable.</p>
+      <p class="quote-text" data-i18n="quote.text">Chaque détail est une promesse.<br>Chaque service, une expérience inoubliable.</p>
       <p class="quote-author">— MAISON PANTHERA</p>
-      <a href="#formulaire" class="btn-gold">VIVRE L'EXPÉRIENCE</a>
+      <a href="#formulaire" class="btn-gold" data-i18n="quote.cta">VIVRE L'EXPÉRIENCE</a>
     </div>
   </div>
 
@@ -349,7 +353,7 @@
   <section id="gallery">
     <div class="section-head reveal-up">
       <p class="label">LIFESTYLE</p>
-      <h2 class="display-title-xl">L'EXPÉRIENCE<br>PANTHERA</h2>
+      <h2 class="display-title-xl" data-i18n="gallery.title">L'EXPÉRIENCE<br>PANTHERA</h2>
     </div>
     <div class="gallery-grid">
       <div class="gal-item gal-tall reveal-up" style="--d:0ms">
@@ -385,14 +389,14 @@
 
       <div class="form-left reveal-left">
         <p class="label">CONTACT</p>
-        <h2 class="display-title">PARLONS DE<br>VOTRE<br>PROJET</h2>
+        <h2 class="display-title" data-i18n="form.title">PARLONS DE<br>VOTRE<br>PROJET</h2>
         <div class="gold-rule"></div>
-        <p class="body-text">Notre équipe répond à toutes vos demandes en moins de 30 minutes, 7j/7, 24h/24.</p>
+        <p class="body-text" data-i18n="form.body">Notre équipe répond à toutes vos demandes en moins de 30 minutes, 7j/7, 24h/24.</p>
         <div class="contact-direct">
           <a href="tel:+33668731109" class="contact-direct-item">
             <span class="cd-icon">📞</span>
             <div>
-              <p class="cd-label">TÉLÉPHONE</p>
+              <p class="cd-label" data-i18n="form.phone">TÉLÉPHONE</p>
               <p class="cd-val">+33 6 68 73 11 09</p>
             </div>
           </a>
@@ -407,7 +411,7 @@
             <span class="cd-icon">💬</span>
             <div>
               <p class="cd-label">WHATSAPP</p>
-              <p class="cd-val">Message direct</p>
+              <p class="cd-val" data-i18n="form.waDirect">Message direct</p>
             </div>
           </a>
         </div>
@@ -431,7 +435,7 @@
           <div class="form-row">
             <div class="form-group">
               <input type="text" name="nom" id="fNom" placeholder=" " required autocomplete="name">
-              <label for="fNom">NOM &amp; PRÉNOM *</label>
+              <label for="fNom" data-i18n="form.name">NOM &amp; PRÉNOM *</label>
             </div>
             <div class="form-group">
               <input type="email" name="email" id="fEmail" placeholder=" " required autocomplete="email">
@@ -442,7 +446,7 @@
           <div class="form-row">
             <div class="form-group">
               <input type="tel" name="telephone" id="fTel" placeholder=" " autocomplete="tel">
-              <label for="fTel">TÉLÉPHONE</label>
+              <label for="fTel" data-i18n="form.phoneLabel">TÉLÉPHONE</label>
             </div>
             <div class="form-group select-group">
               <select name="service" id="fService">
@@ -455,31 +459,31 @@
                 <option>Concert Access</option>
                 <option>Private Jet</option>
                 <option>Yacht</option>
-                <option>Autre</option>
+                <option data-i18n="form.other">Autre</option>
               </select>
-              <label for="fService">SERVICE SOUHAITÉ</label>
+              <label for="fService" data-i18n="form.service">SERVICE SOUHAITÉ</label>
             </div>
           </div>
 
           <div class="form-group full">
             <textarea name="message" id="fMessage" placeholder=" " rows="4" required></textarea>
-            <label for="fMessage">VOTRE DEMANDE *</label>
+            <label for="fMessage" data-i18n="form.message">VOTRE DEMANDE *</label>
           </div>
 
           <div class="form-footer">
-            <p class="form-mention">* Champs obligatoires. Vos données sont traitées de façon confidentielle.</p>
+            <p class="form-mention" data-i18n="form.mention">* Champs obligatoires. Vos données sont traitées de façon confidentielle.</p>
             <button type="submit" class="btn-gold form-submit" id="formBtn">
-              <span class="btn-text">ENVOYER MA DEMANDE</span>
+              <span class="btn-text" data-i18n="form.submit">ENVOYER MA DEMANDE</span>
               <span class="btn-loader" style="display:none">⟳</span>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9H15M15 9L10 4M15 9L10 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </button>
           </div>
 
           <div class="form-success" id="formSuccess" style="display:none">
-            <p>✓ Message envoyé — Nous vous répondons sous 30 minutes.</p>
+            <p data-i18n="form.success">✓ Message envoyé — Nous vous répondons sous 30 minutes.</p>
           </div>
           <div class="form-error" id="formError" style="display:none">
-            <p>Une erreur est survenue. Contactez-nous directement au +33 6 68 73 11 09.</p>
+            <p data-i18n="form.error">Une erreur est survenue. Contactez-nous directement au +33 6 68 73 11 09.</p>
           </div>
 
         </form>
@@ -491,14 +495,14 @@
   <!-- ══ TESTIMONIALS ══════════════════════════════════ -->
   <section id="temoignages">
     <div class="section-head reveal-up">
-      <p class="label">ILS NOUS FONT CONFIANCE</p>
-      <h2 class="display-title-xl">TÉMOIGNAGES</h2>
+      <p class="label" data-i18n="testi.label">ILS NOUS FONT CONFIANCE</p>
+      <h2 class="display-title-xl" data-i18n="testi.title">TÉMOIGNAGES</h2>
     </div>
     <div class="testi-grid">
 
       <div class="testi-card reveal-up" style="--d:0ms">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">« Réservation d'un jet privé en moins d'une heure pour Dubai. Discrétion absolue, équipe réactive et professionnelle. Je ne travaille plus qu'avec Maison Panthera. »</p>
+        <p class="testi-text" data-i18n="testi.t1">« Réservation d'un jet privé en moins d'une heure pour Dubai. Discrétion absolue, équipe réactive et professionnelle. Je ne travaille plus qu'avec Maison Panthera. »</p>
         <div class="testi-author">
           <span class="testi-name">Alexandre D.</span>
           <span class="testi-service">Private Jet — Dubai</span>
@@ -507,7 +511,7 @@
 
       <div class="testi-card reveal-up" style="--d:100ms">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">« Service impeccable pour l'organisation d'une soirée d'anniversaire : VTC, réservation restaurant étoilé et accès loges VIP. Tout était parfait. »</p>
+        <p class="testi-text" data-i18n="testi.t2">« Service impeccable pour l'organisation d'une soirée d'anniversaire : VTC, réservation restaurant étoilé et accès loges VIP. Tout était parfait. »</p>
         <div class="testi-author">
           <span class="testi-name">Sofia M.</span>
           <span class="testi-service">VTC &amp; Booking — Paris</span>
@@ -516,7 +520,7 @@
 
       <div class="testi-card reveal-up" style="--d:200ms">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">« Impossible d'avoir des billets pour la finale — Maison Panthera les a trouvés en 20 minutes. Loges VIP, accueil champagne. Une expérience inoubliable. »</p>
+        <p class="testi-text" data-i18n="testi.t3">« Impossible d'avoir des billets pour la finale — Maison Panthera les a trouvés en 20 minutes. Loges VIP, accueil champagne. Une expérience inoubliable. »</p>
         <div class="testi-author">
           <span class="testi-name">Karim B.</span>
           <span class="testi-service">Match Access — Roland-Garros</span>
@@ -532,9 +536,9 @@
       <div class="footer-brand">
         <img src="images/logo.jpeg" alt="Maison Panthera">
         <p class="footer-name">MAISON PANTHERA</p>
-        <p class="footer-tag">CONCIERGERIE FULL SERVICES</p>
+        <p class="footer-tag" data-i18n="footer.tag">CONCIERGERIE FULL SERVICES</p>
         <div class="footer-social">
-          <a href="https://www.instagram.com/maisonpanthera" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <a href="https://www.instagram.com/maisonpanthera.eu/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </a>
           <a href="https://wa.me/33668731109" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
@@ -544,8 +548,8 @@
       </div>
       <nav class="footer-nav">
         <a href="#services">SERVICES</a>
-        <a href="#about">À PROPOS</a>
-        <a href="#formulaire">CONTACT</a>
+        <a href="#about" data-i18n="nav.about">À PROPOS</a>
+        <a href="#formulaire" data-i18n="nav.contact">CONTACT</a>
       </nav>
       <div class="footer-contact">
         <a href="tel:+33668731109">+33 6 68 73 11 09</a>
@@ -553,7 +557,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 MAISON PANTHERA — TOUS DROITS RÉSERVÉS</p>
+      <p data-i18n="footer.copy">© 2026 MAISON PANTHERA — TOUS DROITS RÉSERVÉS</p>
     </div>
   </footer>
 
@@ -569,13 +573,13 @@
         <img src="images/logo.jpeg" alt="">
         <div class="chat-header-info">
           <p>MAISON PANTHERA</p>
-          <span><i class="chat-dot"></i> Disponible maintenant</span>
+          <span><i class="chat-dot"></i> <span data-i18n="chat.available">Disponible maintenant</span></span>
         </div>
         <button class="chat-close-btn" id="chatClose">✕</button>
       </div>
       <div class="chat-body">
         <div class="chat-bubble bot">
-          <p>Bonjour 👋 Comment puis-je vous aider ?</p>
+          <p data-i18n="chat.hello">Bonjour 👋 Comment puis-je vous aider ?</p>
         </div>
         <div class="chat-options">
           <a href="https://wa.me/33668731109?text=Bonjour,%20je%20souhaite%20réserver%20un%20VTC." target="_blank" rel="noopener" class="chat-opt">🚗 Réserver un VTC</a>
@@ -600,6 +604,6 @@
     </button>
   </div>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>

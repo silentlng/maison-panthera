@@ -202,6 +202,170 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+/* ── i18n Language Switcher ─────────────────────────── */
+const translations = {
+  fr: {
+    'nav.services': 'SERVICES',
+    'nav.about':    'À PROPOS',
+    'nav.contact':  'CONTACT',
+    'hero.subtitle': "CONCIERGERIE D'EXCEPTION",
+    'hero.tagline':  'Votre vie mérite le meilleur.<br>Nous le rendons possible.',
+    'hero.cta1':     'DÉCOUVRIR NOS SERVICES',
+    'hero.cta2':     'PRENDRE CONTACT',
+    'stats.missions':    'MISSIONS RÉALISÉES',
+    'stats.services':    'SERVICES PREMIUM',
+    'stats.availability':'DISPONIBILITÉ',
+    'stats.discretion':  'DISCRÉTION GARANTIE',
+    'about1.label': 'À PROPOS',
+    'about1.title': "L'ART DU<br>SERVICE<br>ABSOLU",
+    'about1.body':  'Maison Panthera est une conciergerie full service dédiée à proposer les meilleurs services pour pouvoir répondre à toutes vos demandes dans la plus grande réactivité.',
+    'about1.feat1': 'Réponse en moins de 30 minutes',
+    'about1.feat2': "Réseau de prestataires d'exception",
+    'about1.feat3': 'Service 100% personnalisé',
+    'about2.label': 'NOTRE RÉSEAU',
+    'about2.title': "PARTENAIRES<br>D'EXCEPTION",
+    'about2.body':  "Maison Panthera collabore avec un réseau de prestataires reconnus, nous permettant de vous proposer une large gamme de services personnalisés et de haute qualité — VTC, booking, accès événements sportifs et festifs, locations privées.",
+    'about2.cta':   'FAIRE UNE DEMANDE',
+    'values.discretion': 'DISCRÉTION',
+    'values.reactivity': 'RÉACTIVITÉ',
+    'values.bespoke':    'SUR MESURE',
+    'services.title': 'NOS SERVICES',
+    'services.sub':   'Une gamme complète de services premium, disponible 7j/7',
+    'card.vtc':      'Van chauffeur & transport privé premium. Véhicules haut de gamme, chauffeurs professionnels.',
+    'card.shopper':  'Accès aux plus grandes maisons de luxe. Shopping personnalisé & exclusif.',
+    'card.carrental':'Location de véhicules prestige & supercars. Ferrari, Lamborghini, Rolls-Royce.',
+    'card.booking':  'Restaurants étoilés, hôtels de prestige, réservations VIP partout dans le monde.',
+    'card.match':    "Toutes catégories jusqu'aux loges VIP. Roland-Garros, PSG, F1 & plus.",
+    'card.concert':  'Accès VIP aux meilleurs concerts & événements exclusifs. Premières loges garanties.',
+    'card.jet':      'Voyagez à votre rythme. Destinations mondiales, disponibilité immédiate.',
+    'card.yacht':    'Location de yachts de luxe. Croisières privées en Méditerranée & au-delà.',
+    'card.cta':      'RÉSERVER →',
+    'quote.text':    'Chaque détail est une promesse.<br>Chaque service, une expérience inoubliable.',
+    'quote.cta':     "VIVRE L'EXPÉRIENCE",
+    'gallery.title': "L'EXPÉRIENCE<br>PANTHERA",
+    'form.title':    'PARLONS DE<br>VOTRE<br>PROJET',
+    'form.body':     'Notre équipe répond à toutes vos demandes en moins de 30 minutes, 7j/7, 24h/24.',
+    'form.phone':    'TÉLÉPHONE',
+    'form.waDirect': 'Message direct',
+    'form.name':     'NOM & PRÉNOM *',
+    'form.phoneLabel':'TÉLÉPHONE',
+    'form.service':  'SERVICE SOUHAITÉ',
+    'form.message':  'VOTRE DEMANDE *',
+    'form.other':    'Autre',
+    'form.mention':  '* Champs obligatoires. Vos données sont traitées de façon confidentielle.',
+    'form.submit':   'ENVOYER MA DEMANDE',
+    'form.success':  '✓ Message envoyé — Nous vous répondons sous 30 minutes.',
+    'form.error':    'Une erreur est survenue. Contactez-nous directement au +33 6 68 73 11 09.',
+    'testi.label':   'ILS NOUS FONT CONFIANCE',
+    'testi.title':   'TÉMOIGNAGES',
+    'testi.t1':      '« Réservation d\'un jet privé en moins d\'une heure pour Dubai. Discrétion absolue, équipe réactive et professionnelle. Je ne travaille plus qu\'avec Maison Panthera. »',
+    'testi.t2':      '« Service impeccable pour l\'organisation d\'une soirée d\'anniversaire : VTC, réservation restaurant étoilé et accès loges VIP. Tout était parfait. »',
+    'testi.t3':      '« Impossible d\'avoir des billets pour la finale — Maison Panthera les a trouvés en 20 minutes. Loges VIP, accueil champagne. Une expérience inoubliable. »',
+    'footer.tag':    'CONCIERGERIE FULL SERVICES',
+    'footer.copy':   '© 2026 MAISON PANTHERA — TOUS DROITS RÉSERVÉS',
+    'chat.available':'Disponible maintenant',
+    'chat.hello':    'Bonjour 👋 Comment puis-je vous aider ?',
+  },
+  en: {
+    'nav.services': 'SERVICES',
+    'nav.about':    'ABOUT',
+    'nav.contact':  'CONTACT',
+    'hero.subtitle': 'FULL-SERVICE CONCIERGE',
+    'hero.tagline':  'Your life deserves the best.<br>We make it happen.',
+    'hero.cta1':     'DISCOVER OUR SERVICES',
+    'hero.cta2':     'GET IN TOUCH',
+    'stats.missions':    'COMPLETED MISSIONS',
+    'stats.services':    'PREMIUM SERVICES',
+    'stats.availability':'AVAILABILITY',
+    'stats.discretion':  'GUARANTEED DISCRETION',
+    'about1.label': 'ABOUT US',
+    'about1.title': 'THE ART OF<br>ABSOLUTE<br>SERVICE',
+    'about1.body':  'Maison Panthera is a full-service concierge dedicated to providing the finest services, responding to your every request with the utmost responsiveness.',
+    'about1.feat1': 'Response in under 30 minutes',
+    'about1.feat2': 'A network of exceptional partners',
+    'about1.feat3': '100% personalized service',
+    'about2.label': 'OUR NETWORK',
+    'about2.title': 'EXCEPTIONAL<br>PARTNERS',
+    'about2.body':  'Maison Panthera works with a network of renowned partners, allowing us to offer a wide range of high-quality personalized services — VTC, bookings, access to sports & entertainment events, private rentals.',
+    'about2.cta':   'SUBMIT A REQUEST',
+    'values.discretion': 'DISCRETION',
+    'values.reactivity': 'RESPONSIVENESS',
+    'values.bespoke':    'BESPOKE',
+    'services.title': 'OUR SERVICES',
+    'services.sub':   'A complete range of premium services, available 7 days a week',
+    'card.vtc':      'Premium chauffeur & private transport. Luxury vehicles, professional drivers.',
+    'card.shopper':  "Access to the world's finest luxury houses. Exclusive personalized shopping.",
+    'card.carrental':'Prestige & supercar rentals. Ferrari, Lamborghini, Rolls-Royce.',
+    'card.booking':  'Starred restaurants, prestige hotels, VIP reservations worldwide.',
+    'card.match':    'All categories up to VIP boxes. Roland-Garros, PSG, F1 & more.',
+    'card.concert':  'VIP access to the best concerts & exclusive events. Front-row guaranteed.',
+    'card.jet':      'Travel on your terms. Worldwide destinations, immediate availability.',
+    'card.yacht':    'Luxury yacht rentals. Private cruises in the Mediterranean & beyond.',
+    'card.cta':      'BOOK NOW →',
+    'quote.text':    'Every detail is a promise.<br>Every service, an unforgettable experience.',
+    'quote.cta':     'LIVE THE EXPERIENCE',
+    'gallery.title': 'THE PANTHERA<br>EXPERIENCE',
+    'form.title':    "LET'S TALK<br>ABOUT YOUR<br>PROJECT",
+    'form.body':     'Our team responds to all requests in under 30 minutes, 7 days a week, 24/7.',
+    'form.phone':    'PHONE',
+    'form.waDirect': 'Direct message',
+    'form.name':     'FULL NAME *',
+    'form.phoneLabel':'PHONE',
+    'form.service':  'DESIRED SERVICE',
+    'form.message':  'YOUR REQUEST *',
+    'form.other':    'Other',
+    'form.mention':  '* Required fields. Your data is treated with strict confidentiality.',
+    'form.submit':   'SEND MY REQUEST',
+    'form.success':  '✓ Message sent — We\'ll reply within 30 minutes.',
+    'form.error':    'An error occurred. Contact us directly at +33 6 68 73 11 09.',
+    'testi.label':   'THEY TRUST US',
+    'testi.title':   'TESTIMONIALS',
+    'testi.t1':      '« Private jet booked in under an hour to Dubai. Absolute discretion, responsive and professional team. I only work with Maison Panthera now. »',
+    'testi.t2':      '« Impeccable service for a birthday celebration: VTC, Michelin-starred dinner reservation and VIP box access. Everything was perfect. »',
+    'testi.t3':      '« Couldn\'t get tickets for the final — Maison Panthera found them in 20 minutes. VIP boxes, champagne welcome. An unforgettable experience. »',
+    'footer.tag':    'FULL-SERVICE CONCIERGE',
+    'footer.copy':   '© 2026 MAISON PANTHERA — ALL RIGHTS RESERVED',
+    'chat.available':'Available now',
+    'chat.hello':    'Hello 👋 How can I help you?',
+  }
+};
+
+let currentLang = localStorage.getItem('mp_lang') || 'fr';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('mp_lang', lang);
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const text = translations[lang][key];
+    if (text === undefined) return;
+    if (text.includes('<br>') || text.includes('<')) {
+      el.innerHTML = text;
+    } else {
+      el.textContent = text;
+    }
+  });
+
+  // Update all lang toggle buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+}
+
+document.querySelectorAll('.lang-toggle').forEach(toggle => {
+  toggle.addEventListener('click', e => {
+    const btn = e.target.closest('.lang-btn');
+    if (!btn) return;
+    const lang = btn.getAttribute('data-lang');
+    if (lang && lang !== currentLang) applyLang(lang);
+  });
+});
+
+// Init on load
+applyLang(currentLang);
+
 /* ── Stats Count-Up ─────────────────────────────────── */
 function animateCount(el, target, suffix, duration) {
   let start = 0;
