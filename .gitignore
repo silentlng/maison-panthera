@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# WhatsApp originals (kept in images/ with clean names)
+WhatsApp Image*.jpeg
+WhatsApp Image*.jpg
