@@ -4,20 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Maison Panthera — Conciergerie Full Services</title>
-  <meta name="description" content="Maison Panthera est une conciergerie full service dédiée à proposer les meilleurs services premium à Paris et partout dans le monde.">
+  <meta name="description" content="Maison Panthera, conciergerie d'exception à Paris. VTC, Private Jet, Yacht, Personal Shopper, Booking VIP. Excellence, discrétion, réactivité 24h/24.">
   <meta name="theme-color" content="#080808">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Maison Panthera">
+
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src 'self' https://formsubmit.co;">
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="images/logo.jpeg">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Maison Panthera — Conciergerie Full Services">
-  <meta property="og:description" content="Excellence. Discrétion. Réactivité.">
-  <meta property="og:image" content="images/hero-bg.jpeg">
+  <meta property="og:title" content="Maison Panthera — Conciergerie d'Exception">
+  <meta property="og:description" content="Excellence. Discrétion. Réactivité. Paris & International.">
+  <meta property="og:image" content="images/yacht.jpeg">
+  <meta property="og:url" content="https://maisonpanthera.fr/">
   <meta property="og:type" content="website">
 
   <!-- Fonts -->
@@ -25,23 +33,30 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Preload hero image -->
+  <link rel="preload" as="image" href="images/hero-bg.jpeg">
+
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
-  <!-- ══════════════════ PRELOADER ══════════════════ -->
+  <!-- ══ PRELOADER ══════════════════════════════════════ -->
   <div id="preloader">
     <div class="preloader-inner">
       <img class="preloader-logo" src="images/logo.jpeg" alt="Maison Panthera">
+      <div class="preloader-bar"><div class="preloader-fill"></div></div>
       <p class="preloader-name">MAISON PANTHERA</p>
     </div>
   </div>
 
-  <!-- ══════════════════ CURSOR ══════════════════ -->
+  <!-- ══ CURSOR ════════════════════════════════════════ -->
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- ══════════════════ NAVIGATION ══════════════════ -->
+  <!-- ══ NAVIGATION ════════════════════════════════════ -->
   <nav id="navbar">
     <a href="#hero" class="nav-logo">
       <img src="images/logo.jpeg" alt="Logo Maison Panthera">
@@ -50,42 +65,43 @@
     <div class="nav-links">
       <a href="#services" class="nav-link">SERVICES</a>
       <a href="#about" class="nav-link">À PROPOS</a>
-      <a href="#contact" class="nav-link">CONTACT</a>
+      <a href="#formulaire" class="nav-link">CONTACT</a>
     </div>
+    <a href="tel:+33668731109" class="nav-cta">+33 6 68 73 11 09</a>
     <button class="nav-burger" id="burger" aria-label="Menu">
-      <span></span>
-      <span></span>
+      <span></span><span></span>
     </button>
   </nav>
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#services" class="mobile-link">SERVICES</a>
-    <a href="#about" class="mobile-link">À PROPOS</a>
-    <a href="#contact" class="mobile-link">CONTACT</a>
-    <div class="mobile-contact">
-      <a href="tel:+33668731109">+33 6 68 73 11 09</a>
-    </div>
+    <button class="mobile-close" id="mobileClose">✕</button>
+    <a href="#services"  class="mobile-link">SERVICES</a>
+    <a href="#about"     class="mobile-link">À PROPOS</a>
+    <a href="#formulaire" class="mobile-link">CONTACT</a>
+    <a href="tel:+33668731109" class="mobile-phone">+33 6 68 73 11 09</a>
   </div>
 
-  <!-- ══════════════════ HERO ══════════════════ -->
+  <!-- ══ HERO ══════════════════════════════════════════ -->
   <section id="hero">
-    <div class="hero-bg" style="background-image: url('images/hero-bg.jpeg')"></div>
+    <div class="hero-bg" style="background-image:url('images/hero-bg.jpeg')"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow">— PARIS —</p>
+      <p class="hero-eyebrow">— PARIS & INTERNATIONAL —</p>
       <h1 class="hero-title">
         <span class="hero-line-1">MAISON</span>
         <span class="hero-line-2">PANTHERA</span>
       </h1>
       <div class="hero-divider-line"></div>
-      <p class="hero-subtitle">CONCIERGERIE FULL SERVICES</p>
-      <a href="#services" class="hero-cta">
-        <span>DÉCOUVRIR</span>
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+      <p class="hero-subtitle">CONCIERGERIE D'EXCEPTION</p>
+      <p class="hero-tagline">Votre vie mérite le meilleur.<br>Nous le rendons possible.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-gold">
+          <span>DÉCOUVRIR NOS SERVICES</span>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9H15M15 9L10 4M15 9L10 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+        <a href="#formulaire" class="btn-outline">PRENDRE CONTACT</a>
+      </div>
     </div>
     <div class="hero-scroll">
       <div class="hero-scroll-line"></div>
@@ -93,39 +109,62 @@
     </div>
   </section>
 
-  <!-- ══════════════════ MARQUEE ══════════════════ -->
+  <!-- Stats strip -->
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="stat-num">500<em>+</em></span>
+      <span class="stat-label">MISSIONS RÉALISÉES</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="hero-stat">
+      <span class="stat-num">8</span>
+      <span class="stat-label">SERVICES PREMIUM</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="hero-stat">
+      <span class="stat-num">24<em>/7</em></span>
+      <span class="stat-label">DISPONIBILITÉ</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="hero-stat">
+      <span class="stat-num">100<em>%</em></span>
+      <span class="stat-label">DISCRÉTION GARANTIE</span>
+    </div>
+  </div>
+
+  <!-- ══ MARQUEE ════════════════════════════════════════ -->
   <div class="marquee-wrapper">
     <div class="marquee-track">
       <div class="marquee-content">
-        <span>VTC</span><em>—</em>
-        <span>PERSONAL SHOPPER</span><em>—</em>
-        <span>CAR RENTAL</span><em>—</em>
-        <span>BOOKING</span><em>—</em>
-        <span>MATCH ACCESS</span><em>—</em>
-        <span>CONCERT ACCESS</span><em>—</em>
-        <span>PRIVATE JET</span><em>—</em>
-        <span>YACHT</span><em>—</em>
+        <span>VTC</span><em>◆</em>
+        <span>PERSONAL SHOPPER</span><em>◆</em>
+        <span>CAR RENTAL</span><em>◆</em>
+        <span>BOOKING VIP</span><em>◆</em>
+        <span>MATCH ACCESS</span><em>◆</em>
+        <span>CONCERT ACCESS</span><em>◆</em>
+        <span>PRIVATE JET</span><em>◆</em>
+        <span>YACHT</span><em>◆</em>
       </div>
       <div class="marquee-content" aria-hidden="true">
-        <span>VTC</span><em>—</em>
-        <span>PERSONAL SHOPPER</span><em>—</em>
-        <span>CAR RENTAL</span><em>—</em>
-        <span>BOOKING</span><em>—</em>
-        <span>MATCH ACCESS</span><em>—</em>
-        <span>CONCERT ACCESS</span><em>—</em>
-        <span>PRIVATE JET</span><em>—</em>
-        <span>YACHT</span><em>—</em>
+        <span>VTC</span><em>◆</em>
+        <span>PERSONAL SHOPPER</span><em>◆</em>
+        <span>CAR RENTAL</span><em>◆</em>
+        <span>BOOKING VIP</span><em>◆</em>
+        <span>MATCH ACCESS</span><em>◆</em>
+        <span>CONCERT ACCESS</span><em>◆</em>
+        <span>PRIVATE JET</span><em>◆</em>
+        <span>YACHT</span><em>◆</em>
       </div>
     </div>
   </div>
 
-  <!-- ══════════════════ ABOUT ══════════════════ -->
+  <!-- ══ ABOUT ══════════════════════════════════════════ -->
   <section id="about">
 
-    <!-- Block 1 -->
     <div class="about-block">
       <div class="about-media reveal-left">
-        <img src="images/about-1.jpeg" alt="Maison Panthera — Intérieur de prestige">
+        <img src="images/about-1.jpeg" alt="Maison Panthera — Service prestige" loading="lazy">
+        <div class="about-media-badge">PARIS</div>
       </div>
       <div class="about-body reveal-right">
         <p class="label">À PROPOS</p>
@@ -135,38 +174,38 @@
           Maison Panthera est une conciergerie full service dédiée à proposer les meilleurs services pour pouvoir répondre à toutes vos demandes dans la plus grande réactivité.
         </p>
         <p class="body-text italic">
-          Maison Panthera is a full-service concierge dedicated to providing the finest services, responding to your every request with the utmost responsiveness.
+          A full-service concierge dedicated to providing the finest services, responding to your every request with the utmost responsiveness.
         </p>
-        <p class="body-text mt">
-          Notre mission : vous offrir des solutions rapides et un service premium adapté à vos besoins.
-        </p>
+        <div class="about-feature-list">
+          <div class="about-feature"><span class="feat-dot"></span>Réponse en moins de 30 minutes</div>
+          <div class="about-feature"><span class="feat-dot"></span>Réseau de prestataires d'exception</div>
+          <div class="about-feature"><span class="feat-dot"></span>Service 100% personnalisé</div>
+        </div>
       </div>
     </div>
 
-    <!-- Block 2 -->
     <div class="about-block about-block--reverse">
       <div class="about-body reveal-left">
         <p class="label">NOTRE RÉSEAU</p>
         <h2 class="display-title">PARTENAIRES<br>D'EXCEPTION</h2>
         <div class="gold-rule"></div>
         <p class="body-text">
-          Maison Panthera collabore avec un réseau de prestataires reconnus, nous permettant de vous proposer une large gamme de services personnalisés et de haute qualité.
+          Maison Panthera collabore avec un réseau de prestataires reconnus, nous permettant de vous proposer une large gamme de services personnalisés et de haute qualité — VTC, booking, accès événements sportifs et festifs, locations privées.
         </p>
         <p class="body-text italic">
-          We work with a network of renowned partners, offering a wide range of high-quality personalized services.
+          We work with a network of renowned partners, offering a wide range of high-quality personalized services across Paris and internationally.
         </p>
-        <p class="body-text mt">
-          Au-delà des services, Maison Panthera vous accompagne au quotidien — que ce soit pour l'organisation de voyages sur mesure, la gestion de votre quotidien à Paris ou des demandes spécifiques.
-        </p>
+        <a href="#formulaire" class="btn-gold-sm">FAIRE UNE DEMANDE</a>
       </div>
       <div class="about-media reveal-right">
-        <img src="images/about-2.jpeg" alt="Maison Panthera — Service quotidien">
+        <img src="images/about-2.jpeg" alt="Maison Panthera — Partenaires" loading="lazy">
+        <div class="about-media-badge">EXCELLENCE</div>
       </div>
     </div>
 
   </section>
 
-  <!-- ══════════════════ VALUES ══════════════════ -->
+  <!-- ══ VALUES ════════════════════════════════════════ -->
   <div class="values-band">
     <div class="values-inner reveal-up">
       <div class="value-item">
@@ -191,11 +230,12 @@
     </div>
   </div>
 
-  <!-- ══════════════════ SERVICES ══════════════════ -->
+  <!-- ══ SERVICES ══════════════════════════════════════ -->
   <section id="services">
     <div class="section-head reveal-up">
       <p class="label">EXPERTISE</p>
       <h2 class="display-title-xl">NOS SERVICES</h2>
+      <p class="section-sub">Une gamme complète de services premium, disponible 7j/7</p>
     </div>
 
     <div class="services-grid">
@@ -206,8 +246,8 @@
         <div class="card-body">
           <span class="card-num">01</span>
           <h3 class="card-title">VTC</h3>
-          <p class="card-desc">Van chauffeur service &amp; transport privé premium</p>
-          <span class="card-arrow">→</span>
+          <p class="card-desc">Van chauffeur &amp; transport privé premium. Véhicules haut de gamme, chauffeurs professionnels.</p>
+          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -217,8 +257,8 @@
         <div class="card-body">
           <span class="card-num">02</span>
           <h3 class="card-title">PERSONAL<br>SHOPPER</h3>
-          <p class="card-desc">Service shopping personnalisé &amp; exclusif</p>
-          <span class="card-arrow">→</span>
+          <p class="card-desc">Accès aux plus grandes maisons de luxe. Shopping personnalisé &amp; exclusif.</p>
+          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -228,8 +268,8 @@
         <div class="card-body">
           <span class="card-num">03</span>
           <h3 class="card-title">CAR RENTAL</h3>
-          <p class="card-desc">Location de véhicules prestige &amp; supercars</p>
-          <span class="card-arrow">→</span>
+          <p class="card-desc">Location de véhicules prestige &amp; supercars. Ferrari, Lamborghini, Rolls-Royce.</p>
+          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -239,8 +279,8 @@
         <div class="card-body">
           <span class="card-num">04</span>
           <h3 class="card-title">BOOKING</h3>
-          <p class="card-desc">Restaurants, hôtels &amp; réservations VIP</p>
-          <span class="card-arrow">→</span>
+          <p class="card-desc">Restaurants étoilés, hôtels de prestige, réservations VIP partout dans le monde.</p>
+          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -250,8 +290,8 @@
         <div class="card-body">
           <span class="card-num">05</span>
           <h3 class="card-title">MATCH ACCESS</h3>
-          <p class="card-desc">Toutes catégories, jusqu'aux loges VIP</p>
-          <span class="card-arrow">→</span>
+          <p class="card-desc">Toutes catégories jusqu'aux loges VIP. Roland-Garros, PSG, F1 &amp; plus.</p>
+          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -261,8 +301,8 @@
         <div class="card-body">
           <span class="card-num">06</span>
           <h3 class="card-title">CONCERT<br>ACCESS</h3>
-          <p class="card-desc">Accès VIP aux meilleurs événements</p>
-          <span class="card-arrow">→</span>
+          <p class="card-desc">Accès VIP aux meilleurs concerts &amp; événements exclusifs. Premières loges garanties.</p>
+          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -272,8 +312,8 @@
         <div class="card-body">
           <span class="card-num">07</span>
           <h3 class="card-title">PRIVATE JET</h3>
-          <p class="card-desc">Voyagez à votre rythme en jet privé</p>
-          <span class="card-arrow">→</span>
+          <p class="card-desc">Voyagez à votre rythme. Destinations mondiales, disponibilité immédiate.</p>
+          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
         </div>
       </article>
 
@@ -283,26 +323,29 @@
         <div class="card-body">
           <span class="card-num">08</span>
           <h3 class="card-title">YACHT</h3>
-          <p class="card-desc">Location de yachts pour croisières privées</p>
-          <span class="card-arrow">→</span>
+          <p class="card-desc">Location de yachts de luxe. Croisières privées en Méditerranée &amp; au-delà.</p>
+          <a href="#formulaire" class="card-cta">RÉSERVER →</a>
         </div>
       </article>
 
     </div>
   </section>
 
-  <!-- ══════════════════ FULL-BLEED QUOTE ══════════════════ -->
+  <!-- ══ QUOTE ══════════════════════════════════════════ -->
   <div class="quote-section">
     <div class="quote-bg" style="background-image:url('images/champagne.jpeg')"></div>
     <div class="quote-overlay"></div>
     <div class="quote-inner reveal-up">
-      <p class="quote-mark">"</p>
+      <div class="quote-logo">
+        <img src="images/logo.jpeg" alt="">
+      </div>
       <p class="quote-text">Chaque détail est une promesse.<br>Chaque service, une expérience inoubliable.</p>
       <p class="quote-author">— MAISON PANTHERA</p>
+      <a href="#formulaire" class="btn-gold">VIVRE L'EXPÉRIENCE</a>
     </div>
   </div>
 
-  <!-- ══════════════════ GALLERY ══════════════════ -->
+  <!-- ══ GALLERY ════════════════════════════════════════ -->
   <section id="gallery">
     <div class="section-head reveal-up">
       <p class="label">LIFESTYLE</p>
@@ -310,77 +353,199 @@
     </div>
     <div class="gallery-grid">
       <div class="gal-item gal-tall reveal-up" style="--d:0ms">
-        <img src="images/vtc-1.jpeg" alt="VTC Premium">
+        <img src="images/vtc-1.jpeg" alt="VTC Premium" loading="lazy">
+        <div class="gal-overlay"><span>VTC PREMIUM</span></div>
       </div>
       <div class="gal-item reveal-up" style="--d:100ms">
-        <img src="images/resort.jpeg" alt="Resort de luxe">
+        <img src="images/resort.jpeg" alt="Resort de luxe" loading="lazy">
+        <div class="gal-overlay"><span>BOOKING</span></div>
       </div>
       <div class="gal-item reveal-up" style="--d:200ms">
-        <img src="images/neon.jpeg" alt="Nuit exclusive">
+        <img src="images/neon.jpeg" alt="Nuit exclusive" loading="lazy">
+        <div class="gal-overlay"><span>NIGHTLIFE</span></div>
       </div>
       <div class="gal-item gal-wide reveal-up" style="--d:100ms">
-        <img src="images/dining.jpeg" alt="Gastronomie">
+        <img src="images/dining.jpeg" alt="Gastronomie" loading="lazy">
+        <div class="gal-overlay"><span>GASTRONOMIE</span></div>
       </div>
       <div class="gal-item reveal-up" style="--d:200ms">
-        <img src="images/vtc-3.jpeg" alt="Transport VIP">
+        <img src="images/vtc-3.jpeg" alt="Transport VIP" loading="lazy">
+        <div class="gal-overlay"><span>TRANSPORT VIP</span></div>
       </div>
       <div class="gal-item reveal-up" style="--d:300ms">
-        <img src="images/vtc-4.jpeg" alt="Intérieur prestige">
+        <img src="images/vtc-4.jpeg" alt="Intérieur prestige" loading="lazy">
+        <div class="gal-overlay"><span>PRESTIGE</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════ CONTACT ══════════════════ -->
-  <section id="contact">
-    <div class="contact-inner">
+  <!-- ══ CONTACT FORM ═══════════════════════════════════ -->
+  <section id="formulaire">
+    <div class="form-section-inner">
 
-      <div class="contact-left reveal-left">
+      <div class="form-left reveal-left">
         <p class="label">CONTACT</p>
         <h2 class="display-title">PARLONS DE<br>VOTRE<br>PROJET</h2>
         <div class="gold-rule"></div>
-        <p class="body-text">
-          Notre équipe est disponible 7j/7, 24h/24 pour répondre à toutes vos demandes avec la plus grande réactivité.
-        </p>
+        <p class="body-text">Notre équipe répond à toutes vos demandes en moins de 30 minutes, 7j/7, 24h/24.</p>
+        <div class="contact-direct">
+          <a href="tel:+33668731109" class="contact-direct-item">
+            <span class="cd-icon">📞</span>
+            <div>
+              <p class="cd-label">TÉLÉPHONE</p>
+              <p class="cd-val">+33 6 68 73 11 09</p>
+            </div>
+          </a>
+          <a href="mailto:maisonpanthera@outlook.com" class="contact-direct-item">
+            <span class="cd-icon">✉</span>
+            <div>
+              <p class="cd-label">EMAIL</p>
+              <p class="cd-val">maisonpanthera@outlook.com</p>
+            </div>
+          </a>
+          <a href="https://wa.me/33668731109?text=Bonjour%20Maison%20Panthera%2C%20je%20souhaite%20avoir%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener noreferrer" class="contact-direct-item">
+            <span class="cd-icon">💬</span>
+            <div>
+              <p class="cd-label">WHATSAPP</p>
+              <p class="cd-val">Message direct</p>
+            </div>
+          </a>
+        </div>
       </div>
 
-      <div class="contact-right reveal-right">
-        <div class="contact-item">
-          <p class="contact-label">TÉLÉPHONE</p>
-          <a href="tel:+33668731109" class="contact-value">+33 6 68 73 11 09</a>
-        </div>
-        <div class="contact-rule"></div>
-        <div class="contact-item">
-          <p class="contact-label">EMAIL</p>
-          <a href="mailto:maisonpanthera@outlook.com" class="contact-value">maisonpanthera@outlook.com</a>
-        </div>
-        <div class="contact-rule"></div>
-        <div class="contact-item">
-          <p class="contact-label">DISPONIBILITÉ</p>
-          <p class="contact-value">7J/7 — 24H/24</p>
-        </div>
-        <a href="mailto:maisonpanthera@outlook.com" class="btn-primary">
-          <span>NOUS CONTACTER</span>
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M3 9H15M15 9L10 4M15 9L10 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+      <div class="form-right reveal-right">
+        <form
+          id="contactForm"
+          action="https://formsubmit.co/maisonpanthera@outlook.com"
+          method="POST"
+          novalidate>
+
+          <!-- FormSubmit config -->
+          <input type="hidden" name="_subject" value="Nouvelle demande — Maison Panthera">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://maisonpanthera.fr/#formulaire">
+          <!-- Honeypot anti-spam -->
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" name="nom" id="fNom" placeholder=" " required autocomplete="name">
+              <label for="fNom">NOM &amp; PRÉNOM *</label>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" id="fEmail" placeholder=" " required autocomplete="email">
+              <label for="fEmail">EMAIL *</label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <input type="tel" name="telephone" id="fTel" placeholder=" " autocomplete="tel">
+              <label for="fTel">TÉLÉPHONE</label>
+            </div>
+            <div class="form-group select-group">
+              <select name="service" id="fService">
+                <option value="" disabled selected></option>
+                <option>VTC</option>
+                <option>Personal Shopper</option>
+                <option>Car Rental</option>
+                <option>Booking (Restaurant / Hôtel)</option>
+                <option>Match Access</option>
+                <option>Concert Access</option>
+                <option>Private Jet</option>
+                <option>Yacht</option>
+                <option>Autre</option>
+              </select>
+              <label for="fService">SERVICE SOUHAITÉ</label>
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <textarea name="message" id="fMessage" placeholder=" " rows="4" required></textarea>
+            <label for="fMessage">VOTRE DEMANDE *</label>
+          </div>
+
+          <div class="form-footer">
+            <p class="form-mention">* Champs obligatoires. Vos données sont traitées de façon confidentielle.</p>
+            <button type="submit" class="btn-gold form-submit" id="formBtn">
+              <span class="btn-text">ENVOYER MA DEMANDE</span>
+              <span class="btn-loader" style="display:none">⟳</span>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9H15M15 9L10 4M15 9L10 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+
+          <div class="form-success" id="formSuccess" style="display:none">
+            <p>✓ Message envoyé — Nous vous répondons sous 30 minutes.</p>
+          </div>
+          <div class="form-error" id="formError" style="display:none">
+            <p>Une erreur est survenue. Contactez-nous directement au +33 6 68 73 11 09.</p>
+          </div>
+
+        </form>
       </div>
 
     </div>
   </section>
 
-  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <!-- ══ TESTIMONIALS ══════════════════════════════════ -->
+  <section id="temoignages">
+    <div class="section-head reveal-up">
+      <p class="label">ILS NOUS FONT CONFIANCE</p>
+      <h2 class="display-title-xl">TÉMOIGNAGES</h2>
+    </div>
+    <div class="testi-grid">
+
+      <div class="testi-card reveal-up" style="--d:0ms">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">« Réservation d'un jet privé en moins d'une heure pour Dubai. Discrétion absolue, équipe réactive et professionnelle. Je ne travaille plus qu'avec Maison Panthera. »</p>
+        <div class="testi-author">
+          <span class="testi-name">Alexandre D.</span>
+          <span class="testi-service">Private Jet — Dubai</span>
+        </div>
+      </div>
+
+      <div class="testi-card reveal-up" style="--d:100ms">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">« Service impeccable pour l'organisation d'une soirée d'anniversaire : VTC, réservation restaurant étoilé et accès loges VIP. Tout était parfait. »</p>
+        <div class="testi-author">
+          <span class="testi-name">Sofia M.</span>
+          <span class="testi-service">VTC &amp; Booking — Paris</span>
+        </div>
+      </div>
+
+      <div class="testi-card reveal-up" style="--d:200ms">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">« Impossible d'avoir des billets pour la finale — Maison Panthera les a trouvés en 20 minutes. Loges VIP, accueil champagne. Une expérience inoubliable. »</p>
+        <div class="testi-author">
+          <span class="testi-name">Karim B.</span>
+          <span class="testi-service">Match Access — Roland-Garros</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ════════════════════════════════════════ -->
   <footer id="footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="images/logo.jpeg" alt="Maison Panthera Logo">
+        <img src="images/logo.jpeg" alt="Maison Panthera">
         <p class="footer-name">MAISON PANTHERA</p>
         <p class="footer-tag">CONCIERGERIE FULL SERVICES</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/maisonpanthera" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://wa.me/33668731109" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
       </div>
       <nav class="footer-nav">
         <a href="#services">SERVICES</a>
         <a href="#about">À PROPOS</a>
-        <a href="#contact">CONTACT</a>
+        <a href="#formulaire">CONTACT</a>
       </nav>
       <div class="footer-contact">
         <a href="tel:+33668731109">+33 6 68 73 11 09</a>
@@ -388,10 +553,53 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 MAISON PANTHERA — TOUS DROITS RÉSERVÉS</p>
+      <p>© 2026 MAISON PANTHERA — TOUS DROITS RÉSERVÉS</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- ══ SCROLL TO TOP ══════════════════════════════════ -->
+  <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <!-- ══ CHAT WIDGET ════════════════════════════════════ -->
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-panel" id="chatPanel">
+      <div class="chat-header">
+        <img src="images/logo.jpeg" alt="">
+        <div class="chat-header-info">
+          <p>MAISON PANTHERA</p>
+          <span><i class="chat-dot"></i> Disponible maintenant</span>
+        </div>
+        <button class="chat-close-btn" id="chatClose">✕</button>
+      </div>
+      <div class="chat-body">
+        <div class="chat-bubble bot">
+          <p>Bonjour 👋 Comment puis-je vous aider ?</p>
+        </div>
+        <div class="chat-options">
+          <a href="https://wa.me/33668731109?text=Bonjour,%20je%20souhaite%20réserver%20un%20VTC." target="_blank" rel="noopener" class="chat-opt">🚗 Réserver un VTC</a>
+          <a href="https://wa.me/33668731109?text=Bonjour,%20je%20souhaite%20louer%20un%20jet%20privé." target="_blank" rel="noopener" class="chat-opt">✈️ Private Jet</a>
+          <a href="https://wa.me/33668731109?text=Bonjour,%20je%20souhaite%20louer%20un%20yacht." target="_blank" rel="noopener" class="chat-opt">🛥 Yacht</a>
+          <a href="https://wa.me/33668731109?text=Bonjour,%20je%20cherche%20un%20personal%20shopper." target="_blank" rel="noopener" class="chat-opt">🛍 Personal Shopper</a>
+          <a href="https://wa.me/33668731109?text=Bonjour,%20je%20souhaite%20une%20réservation%20VIP." target="_blank" rel="noopener" class="chat-opt">⭐ Booking VIP</a>
+          <a href="#formulaire" class="chat-opt chat-opt-form">📋 Formulaire de contact</a>
+        </div>
+      </div>
+      <div class="chat-footer-bar">
+        <a href="https://wa.me/33668731109" target="_blank" rel="noopener" class="chat-wa-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Écrire sur WhatsApp
+        </a>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle" aria-label="Ouvrir le chat">
+      <svg class="chat-ico-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="26" height="26"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <svg class="chat-ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24" style="display:none"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      <span class="chat-badge">1</span>
+    </button>
+  </div>
+
+  <script src="script.js?v=2"></script>
 </body>
 </html>
