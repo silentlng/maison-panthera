@@ -183,9 +183,9 @@ body.cursor-hover .cursor-ring { width: 52px; height: 52px; border-color: var(--
   position: absolute; inset: 0;
   background: linear-gradient(
     160deg,
-    rgba(8,8,8,.72) 0%,
-    rgba(8,8,8,.42) 40%,
-    rgba(8,8,8,.65) 70%,
+    rgba(8,8,8,.78) 0%,
+    rgba(8,8,8,.60) 40%,
+    rgba(8,8,8,.72) 70%,
     rgba(8,8,8,.92) 100%
   );
 }
