@@ -256,6 +256,14 @@ const translations = {
     'form.submit':   'ENVOYER MA DEMANDE',
     'form.success':  '✓ Message envoyé — Nous vous répondons sous 30 minutes.',
     'form.error':    'Une erreur est survenue. Contactez-nous directement au +33 6 68 73 11 09.',
+    'reviews.label':   'VOTRE EXPÉRIENCE',
+    'reviews.title':   'LAISSEZ UN AVIS',
+    'reviews.sub':     'Votre retour nous aide à grandir',
+    'reviews.rating':  'VOTRE NOTE',
+    'reviews.name':    'VOTRE NOM *',
+    'reviews.service': 'SERVICE UTILISÉ',
+    'reviews.message': 'VOTRE AVIS *',
+    'reviews.submit':  'ENVOYER MON AVIS',
     'testi.label':   'ILS NOUS FONT CONFIANCE',
     'testi.title':   'TÉMOIGNAGES',
     'testi.t1':      '« Réservation d\'un jet privé en moins d\'une heure pour Dubai. Discrétion absolue, équipe réactive et professionnelle. Je ne travaille plus qu\'avec Maison Panthera. »',
@@ -318,6 +326,14 @@ const translations = {
     'form.submit':   'SEND MY REQUEST',
     'form.success':  '✓ Message sent — We\'ll reply within 30 minutes.',
     'form.error':    'An error occurred. Contact us directly at +33 6 68 73 11 09.',
+    'reviews.label':   'YOUR EXPERIENCE',
+    'reviews.title':   'LEAVE A REVIEW',
+    'reviews.sub':     'Your feedback helps us grow',
+    'reviews.rating':  'YOUR RATING',
+    'reviews.name':    'YOUR NAME *',
+    'reviews.service': 'SERVICE USED',
+    'reviews.message': 'YOUR REVIEW *',
+    'reviews.submit':  'SUBMIT MY REVIEW',
     'testi.label':   'THEY TRUST US',
     'testi.title':   'TESTIMONIALS',
     'testi.t1':      '« Private jet booked in under an hour to Dubai. Absolute discretion, responsive and professional team. I only work with Maison Panthera now. »',
@@ -407,3 +423,24 @@ if (scrollTopBtn) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
+
+/* ── Star Rating ────────────────────────────────────── */
+const stars = document.querySelectorAll('.star');
+const ratingInput = document.getElementById('reviewRating');
+let selectedRating = 5;
+stars.forEach(star => {
+  star.addEventListener('mouseover', () => {
+    const val = +star.dataset.val;
+    stars.forEach(s => s.classList.toggle('active', +s.dataset.val <= val));
+  });
+  star.addEventListener('mouseleave', () => {
+    stars.forEach(s => s.classList.toggle('active', +s.dataset.val <= selectedRating));
+  });
+  star.addEventListener('click', () => {
+    selectedRating = +star.dataset.val;
+    if (ratingInput) ratingInput.value = selectedRating + '/5';
+    stars.forEach(s => s.classList.toggle('active', +s.dataset.val <= selectedRating));
+  });
+});
+// Default: 5 stars selected
+stars.forEach(s => s.classList.add('active'));

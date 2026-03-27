@@ -39,7 +39,7 @@
   <!-- Preload hero image -->
   <link rel="preload" as="image" href="images/hero-bg.jpeg">
 
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
@@ -59,8 +59,7 @@
   <!-- ══ NAVIGATION ════════════════════════════════════ -->
   <nav id="navbar">
     <a href="#hero" class="nav-logo">
-      <img src="images/logo.jpeg" alt="Logo Maison Panthera">
-      <span>MAISON PANTHERA</span>
+      <img src="images/logo-site.png" alt="Logo Maison Panthera">
     </a>
     <div class="nav-links">
       <a href="#services" class="nav-link" data-i18n="nav.services">SERVICES</a>
@@ -96,22 +95,13 @@
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">— PARIS & INTERNATIONAL —</p>
-      <h1 class="hero-title">
-        <span class="hero-line-1">MAISON</span>
-        <span class="hero-line-2">PANTHERA</span>
-      </h1>
-      <div class="hero-divider-line"></div>
-      <p class="hero-subtitle" data-i18n="hero.subtitle">CONCIERGERIE D'EXCEPTION</p>
-      <p class="hero-tagline" data-i18n="hero.tagline">Votre vie mérite le meilleur.<br>Nous le rendons possible.</p>
-      <div class="hero-actions">
-        <a href="#services" class="btn-gold">
-          <span data-i18n="hero.cta1">DÉCOUVRIR NOS SERVICES</span>
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9H15M15 9L10 4M15 9L10 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </a>
-        <a href="#formulaire" class="btn-outline" data-i18n="hero.cta2">PRENDRE CONTACT</a>
-      </div>
+    <h1 class="visually-hidden">Maison Panthera — Conciergerie Full Services</h1>
+    <div class="hero-cta">
+      <a href="#services" class="btn-gold">
+        <span data-i18n="hero.cta1">DÉCOUVRIR NOS SERVICES</span>
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9H15M15 9L10 4M15 9L10 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+      <a href="#formulaire" class="btn-outline" data-i18n="hero.cta2">PRENDRE CONTACT</a>
     </div>
     <div class="hero-scroll">
       <div class="hero-scroll-line"></div>
@@ -528,11 +518,55 @@
     </div>
   </section>
 
+  <!-- ══ LAISSER UN AVIS ═══════════════════════════════ -->
+  <section id="avis" class="reviews-section">
+    <div class="section-head reveal-up">
+      <p class="label" data-i18n="reviews.label">VOTRE EXPÉRIENCE</p>
+      <h2 class="display-title-xl" data-i18n="reviews.title">LAISSEZ UN AVIS</h2>
+      <p class="section-sub" data-i18n="reviews.sub">Votre retour nous aide à grandir</p>
+    </div>
+    <form class="review-form reveal-up"
+          action="https://formsubmit.co/maisonpanthera@outlook.com"
+          method="POST">
+      <input type="hidden" name="_subject" value="⭐ Nouvel avis client — Maison Panthera">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <div class="review-stars-wrap">
+        <p class="review-stars-label" data-i18n="reviews.rating">VOTRE NOTE</p>
+        <div class="review-stars" id="reviewStars">
+          <span class="star" data-val="1">★</span>
+          <span class="star" data-val="2">★</span>
+          <span class="star" data-val="3">★</span>
+          <span class="star" data-val="4">★</span>
+          <span class="star" data-val="5">★</span>
+        </div>
+        <input type="hidden" name="note" id="reviewRating" value="5/5">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="rName" data-i18n="reviews.name">VOTRE NOM *</label>
+          <input type="text" id="rName" name="nom" required>
+        </div>
+        <div class="form-group">
+          <label for="rService" data-i18n="reviews.service">SERVICE UTILISÉ</label>
+          <input type="text" id="rService" name="service">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="rMessage" data-i18n="reviews.message">VOTRE AVIS *</label>
+        <textarea id="rMessage" name="avis" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn-gold">
+        <span data-i18n="reviews.submit">ENVOYER MON AVIS</span>
+      </button>
+    </form>
+  </section>
+
   <!-- ══ FOOTER ════════════════════════════════════════ -->
   <footer id="footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="images/logo.jpeg" alt="Maison Panthera">
+        <img src="images/logo-site.png" alt="Maison Panthera">
         <p class="footer-name">MAISON PANTHERA</p>
         <p class="footer-tag" data-i18n="footer.tag">CONCIERGERIE FULL SERVICES</p>
         <div class="footer-social">
@@ -602,6 +636,6 @@
     </button>
   </div>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>
