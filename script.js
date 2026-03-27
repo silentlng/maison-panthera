@@ -503,9 +503,23 @@ stars.forEach(s => s.classList.add('active'));
   nextBtn?.addEventListener('click', () => { stopAuto(); next(); startAuto(); });
   prevBtn?.addEventListener('click', () => { stopAuto(); prev(); startAuto(); });
 
-  // Pause on hover
+  // Pause on hover (desktop)
   viewport.addEventListener('mouseenter', stopAuto);
   viewport.addEventListener('mouseleave', startAuto);
+
+  // Touch swipe support (mobile)
+  let touchX = 0;
+  viewport.addEventListener('touchstart', e => {
+    touchX = e.touches[0].clientX;
+  }, { passive: true });
+  viewport.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 45) {
+      stopAuto();
+      dx < 0 ? next() : prev();
+      startAuto();
+    }
+  }, { passive: true });
 
   // Rebuild on resize
   let resizeT;
