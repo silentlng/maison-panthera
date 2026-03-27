@@ -789,6 +789,7 @@ form { display: flex; flex-direction: column; gap: 0; }
 
   .chat-panel { width: 290px; }
   .review-form .form-row { grid-template-columns: 1fr; }
+  .reviews-section { padding: 72px 20px; }
 }
 
 /* ── Lang Toggle ────────────────────────────────────── */
@@ -938,7 +939,9 @@ form { display: flex; flex-direction: column; gap: 0; }
 }
 .review-form label {
   font-size: .55rem; letter-spacing: .22em; color: var(--gray-light);
+  position: static; transform: none;
 }
+.review-form .form-group { border-bottom: none; }
 .review-form input,
 .review-form textarea {
   background: var(--black-3);
