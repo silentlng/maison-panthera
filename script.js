@@ -427,3 +427,92 @@ stars.forEach(star => {
 });
 // Default: 5 stars selected
 stars.forEach(s => s.classList.add('active'));
+
+/* ── Testimonials Infinite Slider ───────────────────── */
+(function () {
+  const viewport = document.getElementById('testiViewport');
+  const track    = document.getElementById('testiTrack');
+  const prevBtn  = document.querySelector('.testi-prev');
+  const nextBtn  = document.querySelector('.testi-next');
+  if (!track || !viewport) return;
+
+  // Collect real cards once (before any cloning)
+  const REAL = [...track.querySelectorAll('.testi-card')];
+  const N    = REAL.length; // 9
+
+  let VIS = 3, cw = 0, pos = 0, busy = false, timer = null;
+
+  function getVis() {
+    return window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+  }
+
+  function build() {
+    stopAuto();
+    VIS = getVis();
+
+    // Remove existing clones
+    track.querySelectorAll('.testi-clone').forEach(e => e.remove());
+
+    // Prepend clones of last VIS real cards (keeps order: [N-VIS … N-1])
+    [...REAL].slice(-VIS).reverse().forEach(c => {
+      const cl = c.cloneNode(true);
+      cl.classList.add('testi-clone');
+      track.prepend(cl);
+    });
+
+    // Append clones of first VIS real cards
+    REAL.slice(0, VIS).forEach(c => {
+      const cl = c.cloneNode(true);
+      cl.classList.add('testi-clone');
+      track.appendChild(cl);
+    });
+
+    // Set uniform width on every card slot
+    cw = viewport.offsetWidth / VIS;
+    [...track.querySelectorAll('.testi-card')].forEach(c => {
+      c.style.width = cw + 'px';
+    });
+
+    // Start at first real card (position VIS, after front clones)
+    pos = VIS;
+    translate(false);
+    startAuto();
+  }
+
+  function translate(anim = true) {
+    track.style.transition = anim
+      ? 'transform 0.6s cubic-bezier(0.16,1,0.3,1)'
+      : 'none';
+    track.style.transform = `translateX(${-pos * cw}px)`;
+  }
+
+  function next() { if (busy) return; busy = true; pos++; translate(); }
+  function prev() { if (busy) return; busy = true; pos--; translate(); }
+
+  track.addEventListener('transitionend', () => {
+    busy = false;
+    // Wrap forward: clones after last real → jump back to real
+    if (pos >= N + VIS) { pos -= N; translate(false); }
+    // Wrap backward: clones before first real → jump forward to real
+    else if (pos < VIS) { pos += N; translate(false); }
+  });
+
+  function startAuto() { timer = setInterval(next, 3500); }
+  function stopAuto()  { clearInterval(timer); timer = null; }
+
+  nextBtn?.addEventListener('click', () => { stopAuto(); next(); startAuto(); });
+  prevBtn?.addEventListener('click', () => { stopAuto(); prev(); startAuto(); });
+
+  // Pause on hover
+  viewport.addEventListener('mouseenter', stopAuto);
+  viewport.addEventListener('mouseleave', startAuto);
+
+  // Rebuild on resize
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(build, 200);
+  });
+
+  build();
+})();

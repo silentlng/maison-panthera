@@ -39,7 +39,7 @@
   <!-- Preload hero image -->
   <link rel="preload" as="image" href="images/hero-palace.jpeg">
 
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
 
@@ -482,89 +482,120 @@
       <p class="label" data-i18n="testi.label">ILS NOUS FONT CONFIANCE</p>
       <h2 class="display-title-xl" data-i18n="testi.title">TÉMOIGNAGES</h2>
     </div>
-    <div class="testi-grid">
 
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text" data-i18n="testi.t1">« Table obtenue au Guy Savoy un vendredi soir, en moins de 2h. Je n'y croyais pas. Service parfait du début à la fin. »</p>
-        <div class="testi-author">
-          <span class="testi-name">Thomas R.</span>
-          <span class="testi-service">Restaurant — Guy Savoy, Paris</span>
+    <div class="testi-slider">
+      <button class="testi-arrow testi-prev" aria-label="Précédent">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M14 5L8 11L14 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div class="testi-viewport" id="testiViewport">
+        <div class="testi-track" id="testiTrack">
+
+          <div class="testi-card">
+            <div class="testi-card-inner">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text" data-i18n="testi.t1">« Table obtenue au Guy Savoy un vendredi soir, en moins de 2h. Je n'y croyais pas. Service parfait du début à la fin. »</p>
+              <div class="testi-author">
+                <span class="testi-name">Thomas R.</span>
+                <span class="testi-service">Restaurant — Guy Savoy, Paris</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-card-inner">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text" data-i18n="testi.t2">« Loges PSG pour le Classique contre l'OM. Accueil champagne, repas gastronomique, ambiance incroyable. Maison Panthera a tout géré. »</p>
+              <div class="testi-author">
+                <span class="testi-name">Julien K.</span>
+                <span class="testi-service">Match — PSG vs OM, Parc des Princes</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-card-inner">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text" data-i18n="testi.t3">« Carré Or pour le concert de Drake à Paris. Placement devant la scène, accès backstage. Une soirée dont je me souviendrai toujours. »</p>
+              <div class="testi-author">
+                <span class="testi-name">Inès B.</span>
+                <span class="testi-service">Concert — Accor Arena, Paris</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-card-inner">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text" data-i18n="testi.t4">« Impossible d'avoir des billets pour la finale de Roland-Garros — Maison Panthera les a trouvés en 20 minutes. Loges VIP, champagne. Inoubliable. »</p>
+              <div class="testi-author">
+                <span class="testi-name">Karim B.</span>
+                <span class="testi-service">Match — Roland-Garros, Paris</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-card-inner">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text" data-i18n="testi.t5">« Dîner surprise pour l'anniversaire de ma femme au Grand Restaurant de Jean-François Piège. Décoration florale, menu personnalisé. Merci infiniment. »</p>
+              <div class="testi-author">
+                <span class="testi-name">Marc L.</span>
+                <span class="testi-service">Restaurant — Le Grand Restaurant, Paris</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-card-inner">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text" data-i18n="testi.t6">« Grand Prix de Monaco en loges privées avec vue sur le circuit. Tout était organisé : transfert, hôtel, paddock. Un niveau d'exception. »</p>
+              <div class="testi-author">
+                <span class="testi-name">Sofia M.</span>
+                <span class="testi-service">F1 — Grand Prix de Monaco</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-card-inner">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text" data-i18n="testi.t7">« Réservation d'un jet privé en moins d'une heure pour Dubai. Discrétion totale, équipe ultra réactive. Je ne travaille plus qu'avec eux. »</p>
+              <div class="testi-author">
+                <span class="testi-name">Alexandre D.</span>
+                <span class="testi-service">Private Jet — Paris / Dubai</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-card-inner">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text" data-i18n="testi.t8">« Concert Beyoncé en carré or, accueil VIP et loge privée. Tout était parfait, de l'arrivée au départ. Une organisation au millimètre. »</p>
+              <div class="testi-author">
+                <span class="testi-name">Amina S.</span>
+                <span class="testi-service">Concert — Stade de France</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-card-inner">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text" data-i18n="testi.t9">« VTC de luxe pour toute une semaine à Paris, disponible 24h/24. Ponctualité irréprochable, véhicule impeccable. À recommander sans hésiter. »</p>
+              <div class="testi-author">
+                <span class="testi-name">David N.</span>
+                <span class="testi-service">VTC Prestige — Paris</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text" data-i18n="testi.t2">« Loges PSG pour le Classique contre l'OM. Accueil champagne, repas gastronomique, ambiance incroyable. Maison Panthera a tout géré. »</p>
-        <div class="testi-author">
-          <span class="testi-name">Julien K.</span>
-          <span class="testi-service">Match — PSG vs OM, Parc des Princes</span>
-        </div>
-      </div>
-
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text" data-i18n="testi.t3">« Carré Or pour le concert de Drake à Paris. Placement devant la scène, accès backstage. Une soirée dont je me souviendrai toujours. »</p>
-        <div class="testi-author">
-          <span class="testi-name">Inès B.</span>
-          <span class="testi-service">Concert — Accor Arena, Paris</span>
-        </div>
-      </div>
-
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text" data-i18n="testi.t4">« Impossible d'avoir des billets pour la finale de Roland-Garros — Maison Panthera les a trouvés en 20 minutes. Loges VIP, champagne. Inoubliable. »</p>
-        <div class="testi-author">
-          <span class="testi-name">Karim B.</span>
-          <span class="testi-service">Match — Roland-Garros, Paris</span>
-        </div>
-      </div>
-
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text" data-i18n="testi.t5">« Dîner surprise pour l'anniversaire de ma femme au Grand Restaurant de Jean-François Piège. Décoration florale, menu personnalisé. Merci infiniment. »</p>
-        <div class="testi-author">
-          <span class="testi-name">Marc L.</span>
-          <span class="testi-service">Restaurant — Le Grand Restaurant, Paris</span>
-        </div>
-      </div>
-
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text" data-i18n="testi.t6">« Grand Prix de Monaco en loges privées avec vue sur le circuit. Tout était organisé : transfert, hôtel, paddock. Un niveau d'exception. »</p>
-        <div class="testi-author">
-          <span class="testi-name">Sofia M.</span>
-          <span class="testi-service">F1 — Grand Prix de Monaco</span>
-        </div>
-      </div>
-
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text" data-i18n="testi.t7">« Réservation d'un jet privé en moins d'une heure pour Dubai. Discrétion totale, équipe ultra réactive. Je ne travaille plus qu'avec eux. »</p>
-        <div class="testi-author">
-          <span class="testi-name">Alexandre D.</span>
-          <span class="testi-service">Private Jet — Paris / Dubai</span>
-        </div>
-      </div>
-
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text" data-i18n="testi.t8">« Concert Beyoncé en carré or, accueil VIP et loge privée. Tout était parfait, de l'arrivée au départ. Une organisation au millimètre. »</p>
-        <div class="testi-author">
-          <span class="testi-name">Amina S.</span>
-          <span class="testi-service">Concert — Stade de France</span>
-        </div>
-      </div>
-
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text" data-i18n="testi.t9">« VTC de luxe pour toute une semaine à Paris, disponible 24h/24. Ponctualité irréprochable, véhicule impeccable. À recommander sans hésiter. »</p>
-        <div class="testi-author">
-          <span class="testi-name">David N.</span>
-          <span class="testi-service">VTC Prestige — Paris</span>
-        </div>
-      </div>
-
+      <button class="testi-arrow testi-next" aria-label="Suivant">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M8 5L14 11L8 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
     </div>
   </section>
 
@@ -687,6 +718,6 @@
     </button>
   </div>
 
-  <script src="script.js?v=11"></script>
+  <script src="script.js?v=12"></script>
 </body>
 </html>
