@@ -106,7 +106,6 @@ body.cursor-hover .cursor-ring { width: 52px; height: 52px; border-color: var(--
 .nav-logo { display: flex; align-items: center; cursor: none; }
 .nav-logo img {
   width: 48px; height: 48px; object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(70%) sepia(40%) saturate(600%) hue-rotate(5deg) brightness(95%);
 }
 .nav-links { display: flex; gap: 44px; }
 .nav-link {
