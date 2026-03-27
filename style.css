@@ -844,6 +844,7 @@ form { display: flex; flex-direction: column; gap: 0; }
   flex: 0 0 auto;
   padding: 0 10px;
   box-sizing: border-box;
+  min-width: 260px; /* safety: prevents 0-width if JS timing issue */
 }
 .testi-card-inner {
   background: var(--black-3);

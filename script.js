@@ -206,8 +206,8 @@ const translations = {
     'card.shopper':  'Accès aux plus grandes maisons de luxe. Shopping personnalisé & exclusif.',
     'card.carrental':'Location de véhicules prestige & supercars. Ferrari, Lamborghini, Rolls-Royce.',
     'card.booking':  'Restaurants étoilés, hôtels de prestige, réservations VIP partout dans le monde.',
-    'card.match':    "Toutes catégories jusqu'aux loges VIP. Roland-Garros, PSG, F1 & plus.",
-    'card.concert':  'Accès VIP aux meilleurs concerts & événements exclusifs. Premières loges garanties.',
+    'card.matchconcert': 'Loges VIP & carré or pour matchs et concerts. Roland-Garros, PSG, F1, artistes internationaux.',
+    'card.nightlife': 'Accès VIP aux meilleurs clubs & soirées privées. Tables réservées, liste VIP, entrées garanties.',
     'card.jet':      'Voyagez à votre rythme. Destinations mondiales, disponibilité immédiate.',
     'card.yacht':    'Location de yachts de luxe. Croisières privées en Méditerranée & au-delà.',
     'card.cta':      'RÉSERVER →',
@@ -282,8 +282,8 @@ const translations = {
     'card.shopper':  "Access to the world's finest luxury houses. Exclusive personalized shopping.",
     'card.carrental':'Prestige & supercar rentals. Ferrari, Lamborghini, Rolls-Royce.',
     'card.booking':  'Starred restaurants, prestige hotels, VIP reservations worldwide.',
-    'card.match':    'All categories up to VIP boxes. Roland-Garros, PSG, F1 & more.',
-    'card.concert':  'VIP access to the best concerts & exclusive events. Front-row guaranteed.',
+    'card.matchconcert': 'VIP boxes & front-row seats for matches and concerts. Roland-Garros, PSG, F1, international artists.',
+    'card.nightlife': 'VIP access to the best clubs & private events. Reserved tables, VIP list, guaranteed entry.',
     'card.jet':      'Travel on your terms. Worldwide destinations, immediate availability.',
     'card.yacht':    'Luxury yacht rentals. Private cruises in the Mediterranean & beyond.',
     'card.cta':      'BOOK NOW →',
@@ -469,6 +469,13 @@ stars.forEach(s => s.classList.add('active'));
 
     // Set uniform width on every card slot
     cw = viewport.offsetWidth / VIS;
+
+    // Guard: if layout not ready yet, retry after next paint
+    if (!cw) {
+      requestAnimationFrame(build);
+      return;
+    }
+
     [...track.querySelectorAll('.testi-card')].forEach(c => {
       c.style.width = cw + 'px';
     });
@@ -497,7 +504,7 @@ stars.forEach(s => s.classList.add('active'));
     else if (pos < VIS) { pos += N; translate(false); }
   });
 
-  function startAuto() { timer = setInterval(next, 3500); }
+  function startAuto() { timer = setInterval(next, 5000); }
   function stopAuto()  { clearInterval(timer); timer = null; }
 
   nextBtn?.addEventListener('click', () => { stopAuto(); next(); startAuto(); });
@@ -528,5 +535,6 @@ stars.forEach(s => s.classList.add('active'));
     resizeT = setTimeout(build, 200);
   });
 
-  build();
+  // Double rAF ensures layout is fully calculated before build()
+  requestAnimationFrame(() => requestAnimationFrame(build));
 })();
