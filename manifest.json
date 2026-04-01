@@ -2,7 +2,8 @@
   "name": "Maison Panthera",
   "short_name": "Panthera",
   "description": "Conciergerie Full Services — Excellence, Discrétion, Réactivité.",
-  "start_url": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#080808",
@@ -11,21 +12,21 @@
   "categories": ["lifestyle", "business"],
   "icons": [
     {
-      "src": "images/logo.jpeg",
+      "src": "images/logo-site.png",
       "sizes": "192x192",
-      "type": "image/jpeg",
-      "purpose": "any maskable"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "images/logo.jpeg",
+      "src": "images/logo-site.png",
       "sizes": "512x512",
-      "type": "image/jpeg",
-      "purpose": "any maskable"
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
   "screenshots": [
     {
-      "src": "images/hero-bg.jpeg",
+      "src": "images/hero-palace.jpeg",
       "sizes": "1280x720",
       "type": "image/jpeg"
     }

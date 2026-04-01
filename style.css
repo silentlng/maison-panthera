@@ -107,6 +107,8 @@ button { border: none; background: none; font-family: inherit; cursor: pointer; 
 }
 .nav-link:hover { color: var(--gold); }
 .nav-link:hover::after { width:100%; }
+.nav-link.is-active { color: var(--gold); }
+.nav-link.is-active::after { width: 100%; }
 .nav-cta {
   font-size: .6rem; font-weight: 500; letter-spacing: .15em;
   padding: 10px 22px; border: 1px solid rgba(201,165,53,.4);
@@ -142,9 +144,29 @@ button { border: none; background: none; font-family: inherit; cursor: pointer; 
   transition: color var(--t-fast);
 }
 .mobile-link:hover { color: var(--gold); }
+.mobile-link.is-active { color: var(--gold); }
 .mobile-phone {
   font-size: .8rem; letter-spacing: .15em; color: var(--gold);
   margin-top: 8px;
+}
+
+/* ── Page Transition ───────────────────────────────── */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(8,8,8,.98) 0%, rgba(8,8,8,.96) 40%, rgba(201,165,53,.18) 100%);
+  transform: translateY(100%);
+  transition: transform .65s var(--ease);
+}
+body.is-entering .page-transition,
+body.is-leaving .page-transition {
+  transform: translateY(0);
+}
+body.page-ready:not(.is-leaving) .page-transition {
+  transform: translateY(-100%);
 }
 
 /* ── Hero ───────────────────────────────────────────── */
@@ -162,6 +184,110 @@ button { border: none; background: none; font-family: inherit; cursor: pointer; 
 .hero-overlay {
   position: absolute; inset: 0;
   background: transparent;
+}
+
+/* ── Internal Page Hero ────────────────────────────── */
+.page-hero {
+  position: relative;
+  min-height: 76vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 160px 48px 88px;
+  overflow: hidden;
+}
+.page-hero-bg,
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+.page-hero-bg {
+  background-size: cover;
+  background-position: center;
+  filter: saturate(.9) brightness(.5);
+  transform: scale(1.04);
+}
+.page-hero-overlay {
+  background:
+    linear-gradient(180deg, rgba(8,8,8,.76) 0%, rgba(8,8,8,.5) 38%, rgba(8,8,8,.92) 100%),
+    radial-gradient(circle at center, rgba(201,165,53,.08) 0%, transparent 55%);
+}
+.page-hero--services .page-hero-bg { background-image: url('images/private-jet.jpeg'); }
+.page-hero--about .page-hero-bg { background-image: url('images/maldives.jpeg'); }
+.page-hero--contact .page-hero-bg { background-image: url('images/finedining.jpeg'); }
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+}
+.page-hero-copy {
+  margin-top: 18px;
+  max-width: 620px;
+  font-size: .84rem;
+  line-height: 1.95;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.72);
+}
+.page-hero-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.page-main {
+  position: relative;
+  z-index: 1;
+}
+.page-summary {
+  padding: 88px 48px;
+  border-top: 1px solid rgba(201,165,53,.1);
+  border-bottom: 1px solid rgba(201,165,53,.08);
+  background: var(--black-2);
+}
+.page-summary-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.page-summary-card {
+  padding: 26px 24px;
+  background: var(--black-3);
+  border: 1px solid rgba(201,165,53,.12);
+}
+.page-summary-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  letter-spacing: .08em;
+  margin-bottom: 10px;
+}
+.page-summary-card p {
+  font-size: .7rem;
+  line-height: 1.9;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.58);
+}
+.page-cta-band {
+  padding: 90px 48px 0;
+  background: var(--black);
+}
+.page-cta-panel {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 38px 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border: 1px solid rgba(201,165,53,.18);
+  background: linear-gradient(135deg, rgba(201,165,53,.08), rgba(255,255,255,.02));
+}
+.page-cta-panel p {
+  font-size: .74rem;
+  line-height: 1.9;
+  letter-spacing: .1em;
+  color: rgba(255,255,255,.62);
+  max-width: 720px;
 }
 
 /* Hero identity block (logo + name + tagline) */
@@ -757,6 +883,19 @@ form { display: flex; flex-direction: column; gap: 0; }
   .nav-links, .nav-cta { display: none; }
   .nav-burger { display: flex; }
   .nav-logo span { display: none; }
+
+  .page-hero {
+    min-height: 68vh;
+    padding: 132px 24px 72px;
+  }
+  .page-summary,
+  .page-cta-band { padding-left: 24px; padding-right: 24px; }
+  .page-summary-inner { grid-template-columns: 1fr; }
+  .page-cta-panel {
+    padding: 28px 24px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
 
   #services  { padding: 80px 0 0; }
   #gallery   { padding: 80px 0; }

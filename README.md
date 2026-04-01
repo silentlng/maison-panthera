@@ -1,43 +1,39 @@
-# Maison Panthera — Conciergerie Full Services
+# Maison Panthera
 
-Site vitrine luxe pour **Maison Panthera**, conciergerie full service basée à Paris.
-
-## Stack
-- HTML5 / CSS3 / JavaScript vanilla
-- PWA (Progressive Web App) — installable sur iOS & Android
-- Aucune dépendance externe
+Version recommandée prête à déployer sur un seul service Render, avec le site et le backend sur la même URL.
 
 ## Déploiement
 
-### GitHub Pages (gratuit)
-```bash
-# 1. Créer le repo sur github.com/new
-# 2. Pousser le code
-git remote add origin https://github.com/TON_USERNAME/maison-panthera.git
-git push -u origin main
+1. Mets ce dossier dans un repository GitHub.
+2. Sur Render, crée un nouveau service depuis ce repo.
+3. Render détectera [render.yaml](/Users/lng/Desktop/PANTHERA-SITE/render.yaml).
+4. Déploie le service.
+5. Le site et l'API seront servis ensemble sur la même URL.
 
-# 3. Activer GitHub Pages : Settings → Pages → Source: main branch
+## Pourquoi cette solution
+
+- un seul déploiement
+- aucun problème de CORS entre le site et l'API
+- même rendu que celui construit localement
+- compatible avec domaine personnalisé ensuite
+- plus simple que GitHub Pages + backend séparé
+
+## Fichiers clés
+
+- [render.yaml](/Users/lng/Desktop/PANTHERA-SITE/render.yaml)
+- [backend/app.py](/Users/lng/Desktop/PANTHERA-SITE/backend/app.py)
+- [site-config.js](/Users/lng/Desktop/PANTHERA-SITE/site-config.js)
+
+`site-config.js` bascule automatiquement :
+
+- en mode local statique sans backend sur `localhost:4173/4174`
+- en mode API same-origin une fois le site déployé
+
+## Aperçu local
+
+```bash
+cd /Users/lng/Desktop/PANTHERA-SITE
+python3 -m http.server 4173
 ```
 
-### Vercel (recommandé — HTTPS + domaine custom)
-```bash
-npm i -g vercel
-vercel --prod
-```
-
-### Netlify (drag & drop)
-Glisser le dossier sur app.netlify.com
-
-## PWA — Installation App Store
-Pour publier sur l'App Store iOS / Google Play, wrapper avec **Capacitor** :
-```bash
-npm install -g @capacitor/cli
-npx cap init "Maison Panthera" fr.maisonpanthera.app
-npx cap add ios
-npx cap add android
-npx cap open ios    # Ouvre Xcode → Archive → App Store Connect
-```
-
-## Contact
-- +33 6 68 73 11 09
-- maisonpanthera@outlook.com
+Puis ouvre `http://localhost:4173`.

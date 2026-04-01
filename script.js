@@ -2,50 +2,177 @@
    MAISON PANTHERA — script.js v2
 ═══════════════════════════════════════════════════════ */
 'use strict';
+const siteConfig = window.MAISON_PANTHERA_CONFIG || {};
+const apiBaseUrl = (siteConfig.apiBaseUrl || '').trim().replace(/\/$/, '');
 
-/* ── Preloader ──────────────────────────────────────── */
+function hasApiBackend() {
+  return apiBaseUrl.length > 0;
+}
+
+function getApiUrl(path) {
+  return `${apiBaseUrl}${path.startsWith('/') ? path : `/${path}`}`;
+}
+
+function setPortableFormRedirects() {
+  const pageUrl = `${window.location.origin}${window.location.pathname}`;
+  document.querySelectorAll('input[name="_next"]').forEach(input => {
+    const targetHash = input.value.includes('#') ? input.value.slice(input.value.indexOf('#')) : '';
+    input.value = `${pageUrl}${targetHash}`;
+  });
+}
+
+function revealPage() {
+  document.body.classList.add('page-ready');
+  requestAnimationFrame(() => {
+    document.body.classList.remove('is-entering');
+  });
+}
+
+const finishIntro = (() => {
+  let done = false;
+  return () => {
+    if (done) return;
+    done = true;
+    document.getElementById('preloader')?.classList.add('hidden');
+    document.getElementById('hero')?.classList.add('loaded');
+    document.querySelector('.page-hero')?.classList.add('loaded');
+    revealPage();
+  };
+})();
+
+function initPageTransitions() {
+  window.addEventListener('pageshow', () => {
+    document.body.classList.remove('is-leaving');
+    revealPage();
+  });
+
+  document.querySelectorAll('a[data-page-link]').forEach(link => {
+    link.addEventListener('click', event => {
+      if (
+        event.defaultPrevented ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        link.target === '_blank'
+      ) {
+        return;
+      }
+
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#')) return;
+
+      const url = new URL(href, window.location.href);
+      if (url.origin !== window.location.origin) return;
+
+      event.preventDefault();
+      document.body.classList.add('is-leaving');
+      setTimeout(() => {
+        window.location.href = url.href;
+      }, 420);
+    });
+  });
+}
+
+function setButtonLoading(button, loading) {
+  if (!button) return;
+  button.disabled = loading;
+  const text = button.querySelector('.btn-text');
+  const loader = button.querySelector('.btn-loader');
+  if (text) text.style.display = loading ? 'none' : 'inline';
+  if (loader) loader.style.display = loading ? 'inline-block' : 'none';
+}
+
+function showFeedback(successEl, errorEl, type) {
+  if (successEl) successEl.style.display = type === 'success' ? 'block' : 'none';
+  if (errorEl) errorEl.style.display = type === 'error' ? 'block' : 'none';
+}
+
+async function postJson(path, payload) {
+  const response = await fetch(getApiUrl(path), {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok || data.ok === false) {
+    throw new Error(data.error || 'Request failed');
+  }
+  return data;
+}
+
+function fallbackMailto(form) {
+  const name = form.querySelector('[name="nom"]')?.value || '';
+  const email = form.querySelector('[name="email"]')?.value || '';
+  const service = form.querySelector('[name="service"]')?.value || '';
+  const msg = form.querySelector('[name="message"]')?.value || '';
+  const subject = encodeURIComponent('Nouvelle demande — Maison Panthera');
+  const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${msg}`);
+  window.location.href = `mailto:maisonpanthera@outlook.com?subject=${subject}&body=${body}`;
+}
+
+initPageTransitions();
+
+window.addEventListener('DOMContentLoaded', () => {
+  setPortableFormRedirects();
+  setTimeout(finishIntro, 2600);
+});
+
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('preloader').classList.add('hidden');
-    document.getElementById('hero').classList.add('loaded');
-  }, 2400);
+  setPortableFormRedirects();
+  setTimeout(finishIntro, 1200);
 });
 
 /* ── Navbar scroll ──────────────────────────────────── */
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+}
 
 /* ── Mobile Menu ────────────────────────────────────── */
-const burger     = document.getElementById('burger');
+const burger = document.getElementById('burger');
 const mobileMenu = document.getElementById('mobileMenu');
 const mobileClose = document.getElementById('mobileClose');
 
 function openMenu() {
+  if (!mobileMenu || !burger) return;
   mobileMenu.classList.add('open');
   burger.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
+
 function closeMenu() {
+  if (!mobileMenu || !burger) return;
   mobileMenu.classList.remove('open');
   burger.classList.remove('open');
   document.body.style.overflow = '';
 }
-burger.addEventListener('click', () => mobileMenu.classList.contains('open') ? closeMenu() : openMenu());
-mobileClose.addEventListener('click', closeMenu);
-document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
+
+if (burger && mobileMenu && mobileClose) {
+  burger.addEventListener('click', () => mobileMenu.classList.contains('open') ? closeMenu() : openMenu());
+  mobileClose.addEventListener('click', closeMenu);
+  document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', closeMenu));
+}
 
 /* ── Scroll Reveal ──────────────────────────────────── */
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      revealObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.reveal-up,.reveal-left,.reveal-right,.testi-card').forEach(el => revealObs.observe(el));
+if ('IntersectionObserver' in window) {
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.reveal-up,.reveal-left,.reveal-right,.testi-card').forEach(el => revealObs.observe(el));
+}
 
 /* ── Hero Parallax ──────────────────────────────────── */
 const heroBg = document.querySelector('.hero-bg');
@@ -56,12 +183,13 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 /* ── Smooth anchor scroll ───────────────────────────── */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', event => {
+    const target = document.querySelector(anchor.getAttribute('href'));
     if (!target) return;
-    e.preventDefault();
-    const top = target.getBoundingClientRect().top + window.scrollY - navbar.offsetHeight;
+    event.preventDefault();
+    const navOffset = navbar ? navbar.offsetHeight : 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - navOffset;
     window.scrollTo({ top, behavior: 'smooth' });
   });
 });
@@ -69,99 +197,106 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 /* ── Chat Widget ────────────────────────────────────── */
 const chatWidget = document.getElementById('chatWidget');
 const chatToggle = document.getElementById('chatToggle');
-const chatClose  = document.getElementById('chatClose');
-const chatBadge  = chatToggle.querySelector('.chat-badge');
-const icoOpen    = chatToggle.querySelector('.chat-ico-open');
-const icoClose   = chatToggle.querySelector('.chat-ico-close');
+const chatClose = document.getElementById('chatClose');
+const chatBadge = chatToggle?.querySelector('.chat-badge');
+const icoOpen = chatToggle?.querySelector('.chat-ico-open');
+const icoClose = chatToggle?.querySelector('.chat-ico-close');
 
 function openChat() {
+  if (!chatWidget || !icoOpen || !icoClose) return;
   chatWidget.classList.add('open');
-  icoOpen.style.display  = 'none';
+  icoOpen.style.display = 'none';
   icoClose.style.display = 'block';
   if (chatBadge) chatBadge.style.display = 'none';
 }
+
 function closeChat() {
+  if (!chatWidget || !icoOpen || !icoClose) return;
   chatWidget.classList.remove('open');
-  icoOpen.style.display  = 'block';
+  icoOpen.style.display = 'block';
   icoClose.style.display = 'none';
 }
-chatToggle.addEventListener('click', () => chatWidget.classList.contains('open') ? closeChat() : openChat());
-chatClose.addEventListener('click', closeChat);
 
-// Close chat on outside click
-document.addEventListener('click', e => {
-  if (chatWidget.classList.contains('open') && !chatWidget.contains(e.target)) {
-    closeChat();
-  }
-});
+if (chatWidget && chatToggle && chatClose) {
+  chatToggle.addEventListener('click', () => chatWidget.classList.contains('open') ? closeChat() : openChat());
+  chatClose.addEventListener('click', closeChat);
 
-// Close chat when clicking a link inside it
-document.querySelectorAll('.chat-opt').forEach(opt => {
-  opt.addEventListener('click', () => setTimeout(closeChat, 150));
-});
-
-/* ── Contact Form ───────────────────────────────────── */
-const form       = document.getElementById('contactForm');
-const formBtn    = document.getElementById('formBtn');
-const formSuccess = document.getElementById('formSuccess');
-const formError   = document.getElementById('formError');
-
-if (form) {
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    formSuccess.style.display = 'none';
-    formError.style.display   = 'none';
-
-    // Basic validation
-    const required = form.querySelectorAll('[required]');
-    let valid = true;
-    required.forEach(f => {
-      if (!f.value.trim()) { f.style.borderBottom = '1px solid #ff8080'; valid = false; }
-      else f.style.borderBottom = '';
-    });
-    if (!valid) return;
-
-    // Rate limiting: prevent double submit
-    if (formBtn.disabled) return;
-    formBtn.disabled = true;
-    formBtn.querySelector('.btn-text').style.display = 'none';
-    formBtn.querySelector('.btn-loader').style.display = 'inline-block';
-
-    try {
-      const data = new FormData(form);
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok || res.redirected) {
-        formSuccess.style.display = 'block';
-        form.reset();
-      } else {
-        throw new Error('Network error');
-      }
-    } catch {
-      // Fallback: open email client
-      const name    = form.querySelector('[name="nom"]').value;
-      const email   = form.querySelector('[name="email"]').value;
-      const service = form.querySelector('[name="service"]').value;
-      const msg     = form.querySelector('[name="message"]').value;
-      const subject = encodeURIComponent('Nouvelle demande — Maison Panthera');
-      const body    = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${msg}`);
-      window.location.href = `mailto:maisonpanthera@outlook.com?subject=${subject}&body=${body}`;
-      formSuccess.style.display = 'block';
-    } finally {
-      formBtn.disabled = false;
-      formBtn.querySelector('.btn-text').style.display = 'inline';
-      formBtn.querySelector('.btn-loader').style.display = 'none';
+  document.addEventListener('click', event => {
+    if (chatWidget.classList.contains('open') && !chatWidget.contains(event.target)) {
+      closeChat();
     }
   });
 
-  // Input validation feedback
-  form.querySelectorAll('input[required], textarea[required]').forEach(f => {
-    f.addEventListener('blur', () => {
-      if (!f.value.trim()) f.style.borderBottom = '1px solid rgba(255,80,80,.5)';
-      else f.style.borderBottom = '';
+  document.querySelectorAll('.chat-opt').forEach(opt => {
+    opt.addEventListener('click', () => setTimeout(closeChat, 150));
+  });
+}
+
+/* ── Contact Form ───────────────────────────────────── */
+const form = document.getElementById('contactForm');
+const formBtn = document.getElementById('formBtn');
+const formSuccess = document.getElementById('formSuccess');
+const formError = document.getElementById('formError');
+
+if (form) {
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    showFeedback(formSuccess, formError, 'idle');
+
+    const required = form.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(field => {
+      if (!field.value.trim()) {
+        field.style.borderBottom = '1px solid #ff8080';
+        valid = false;
+      } else {
+        field.style.borderBottom = '';
+      }
+    });
+    if (!valid || formBtn?.disabled) return;
+
+    setButtonLoading(formBtn, true);
+
+    try {
+      if (hasApiBackend()) {
+        await postJson('/api/contact', {
+          nom: form.querySelector('[name="nom"]')?.value || '',
+          email: form.querySelector('[name="email"]')?.value || '',
+          telephone: form.querySelector('[name="telephone"]')?.value || '',
+          service: form.querySelector('[name="service"]')?.value || '',
+          message: form.querySelector('[name="message"]')?.value || '',
+          website: form.querySelector('[name="_honey"]')?.value || ''
+        });
+      } else {
+        const data = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (!response.ok && !response.redirected) {
+          throw new Error('Network error');
+        }
+      }
+
+      showFeedback(formSuccess, formError, 'success');
+      form.reset();
+    } catch {
+      if (!hasApiBackend()) {
+        fallbackMailto(form);
+        showFeedback(formSuccess, formError, 'success');
+      } else {
+        showFeedback(formSuccess, formError, 'error');
+      }
+    } finally {
+      setButtonLoading(formBtn, false);
+    }
+  });
+
+  form.querySelectorAll('input[required], textarea[required]').forEach(field => {
+    field.addEventListener('blur', () => {
+      field.style.borderBottom = field.value.trim() ? '' : '1px solid rgba(255,80,80,.5)';
     });
   });
 }
@@ -410,6 +545,9 @@ if (scrollTopBtn) {
 /* ── Star Rating ────────────────────────────────────── */
 const stars = document.querySelectorAll('.star');
 const ratingInput = document.getElementById('reviewRating');
+const reviewForm = document.querySelector('.review-form');
+const reviewSuccess = document.getElementById('reviewSuccess');
+const reviewError = document.getElementById('reviewError');
 let selectedRating = 5;
 stars.forEach(star => {
   star.addEventListener('mouseover', () => {
@@ -427,6 +565,50 @@ stars.forEach(star => {
 });
 // Default: 5 stars selected
 stars.forEach(s => s.classList.add('active'));
+
+if (reviewForm && hasApiBackend()) {
+  reviewForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    showFeedback(reviewSuccess, reviewError, 'idle');
+
+    const submitBtn = reviewForm.querySelector('button[type="submit"]');
+    const required = reviewForm.querySelectorAll('[required]');
+    let valid = true;
+
+    required.forEach(field => {
+      if (!field.value.trim()) {
+        field.style.borderColor = '#ff8080';
+        valid = false;
+      } else {
+        field.style.borderColor = '';
+      }
+    });
+
+    if (!valid || submitBtn?.disabled) return;
+
+    setButtonLoading(submitBtn, true);
+
+    try {
+      await postJson('/api/reviews', {
+        nom: reviewForm.querySelector('[name="nom"]')?.value || '',
+        service: reviewForm.querySelector('[name="service"]')?.value || '',
+        avis: reviewForm.querySelector('[name="avis"]')?.value || '',
+        note: reviewForm.querySelector('[name="note"]')?.value || `${selectedRating}/5`,
+        website: reviewForm.querySelector('[name="website"]')?.value || ''
+      });
+
+      reviewForm.reset();
+      selectedRating = 5;
+      if (ratingInput) ratingInput.value = '5/5';
+      stars.forEach(star => star.classList.add('active'));
+      showFeedback(reviewSuccess, reviewError, 'success');
+    } catch {
+      showFeedback(reviewSuccess, reviewError, 'error');
+    } finally {
+      setButtonLoading(submitBtn, false);
+    }
+  });
+}
 
 /* ── Testimonials Infinite Slider ───────────────────── */
 (function () {
